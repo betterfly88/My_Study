@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1e5f7cd7-ea4c-4330-ab39-c988bb98fb9a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/service/CalculatorHandler.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/classes/calculator/Calculator.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/classes/calculator/StringCalculator.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/classes/service/CalculatorService$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/classes/service/CalculatorService$Calculation$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/classes/service/CalculatorService$Calculation.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/classes/service/CalculatorService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/test/classes/CalculatorTest.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/calculator/Calculator.java" afterPath="$PROJECT_DIR$/src/main/java/controller/CalculatorController.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/calculator/StringCalculator.java" afterPath="$PROJECT_DIR$/src/main/java/controller/StringCalculatorController.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/calculator/CalculatorTest.java" afterPath="$PROJECT_DIR$/src/test/java/controller/CalculatorControllerTest.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/calculator/StringCalculatorTest.java" afterPath="$PROJECT_DIR$/src/test/java/controller/StringCalculatorControllerTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/service/CalculatorEnum$Calculation.class" afterPath="$PROJECT_DIR$/out/production/classes/service/CalculatorEnum$Calculation.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/service/CalculatorEnum.class" afterPath="$PROJECT_DIR$/out/production/classes/service/CalculatorEnum.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/service/CalculatorEnum.java" afterPath="$PROJECT_DIR$/src/main/java/service/CalculatorEnum.java" />
     </list>
@@ -26,6 +16,11 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/betterFLY$CalculatorEnum.coverage" NAME="CalculatorEnum Coverage Results" MODIFIED="1519056636454" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>service.*</FILTER>
+    </SUITE>
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -74,24 +69,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CalculatorEnum.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CalculatorEnum.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/service/CalculatorEnum.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="690">
-              <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+            <state relative-caret-position="533">
+              <caret line="61" column="12" lean-forward="false" selection-start-line="61" selection-start-column="12" selection-end-line="61" selection-end-column="12" />
               <folding>
-                <element signature="e#258#259#0" expanded="true" />
-                <element signature="e#302#303#0" expanded="true" />
-                <element signature="e#413#414#0" expanded="true" />
-                <element signature="e#457#458#0" expanded="true" />
-                <element signature="e#571#572#0" expanded="true" />
-                <element signature="e#615#616#0" expanded="true" />
-                <element signature="e#727#728#0" expanded="true" />
-                <element signature="e#771#772#0" expanded="true" />
-                <element signature="e#856#857#0" expanded="true" />
-                <element signature="e#898#899#0" expanded="true" />
-                <element signature="e#933#934#0" expanded="true" />
-                <element signature="e#969#970#0" expanded="true" />
+                <element signature="e#260#261#0" expanded="true" />
+                <element signature="e#304#305#0" expanded="true" />
+                <element signature="e#417#418#0" expanded="true" />
+                <element signature="e#461#462#0" expanded="true" />
+                <element signature="e#577#578#0" expanded="true" />
+                <element signature="e#621#622#0" expanded="true" />
+                <element signature="e#735#736#0" expanded="true" />
+                <element signature="e#779#780#0" expanded="true" />
+                <element signature="e#864#865#0" expanded="true" />
+                <element signature="e#906#907#0" expanded="true" />
+                <element signature="e#941#942#0" expanded="true" />
+                <element signature="e#977#978#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -136,7 +131,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CalculatorHandler.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CalculatorHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/service/CalculatorHandler.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
@@ -481,10 +476,10 @@
         <option value="$PROJECT_DIR$/src/main/java/service/CalculatorService.java" />
         <option value="$PROJECT_DIR$/src/main/java/service/Calculator.java" />
         <option value="$PROJECT_DIR$/src/main/java/service/CalculatorImple.java" />
-        <option value="$PROJECT_DIR$/src/main/java/service/CalculatorEnum.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/Calculator.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/CalculatorController.java" />
         <option value="$PROJECT_DIR$/src/main/java/service/CalculatorHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/service/CalculatorEnum.java" />
       </list>
     </option>
   </component>
@@ -864,8 +859,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.CalculatorControllerTest.덧셈" />
-        <item index="1" class="java.lang.String" itemvalue="Application.CalculatorEnum" />
+        <item index="0" class="java.lang.String" itemvalue="Application.CalculatorEnum" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.CalculatorControllerTest.덧셈" />
         <item index="2" class="java.lang.String" itemvalue="Application.StringCalculatorController" />
         <item index="3" class="java.lang.String" itemvalue="JUnit.CalculatorControllerTest" />
         <item index="4" class="java.lang.String" itemvalue="Gradle.tdd [build]" />
@@ -892,7 +887,7 @@
       <option name="presentableId" value="Default" />
       <updated>1518938175659</updated>
       <workItem from="1518938182855" duration="6373000" />
-      <workItem from="1519047535867" duration="3859000" />
+      <workItem from="1519047535867" duration="4561000" />
     </task>
     <servers />
   </component>
@@ -926,7 +921,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10232000" />
+    <option name="totallyTimeSpent" value="10934000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -952,8 +947,9 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297619" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2422619" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -977,7 +973,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1159,27 +1155,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/CalculatorEnum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-          <folding>
-            <element signature="e#258#259#0" expanded="true" />
-            <element signature="e#302#303#0" expanded="true" />
-            <element signature="e#413#414#0" expanded="true" />
-            <element signature="e#457#458#0" expanded="true" />
-            <element signature="e#571#572#0" expanded="true" />
-            <element signature="e#615#616#0" expanded="true" />
-            <element signature="e#727#728#0" expanded="true" />
-            <element signature="e#771#772#0" expanded="true" />
-            <element signature="e#856#857#0" expanded="true" />
-            <element signature="e#898#899#0" expanded="true" />
-            <element signature="e#933#934#0" expanded="true" />
-            <element signature="e#969#970#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/service/CalculatorImple.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -1202,6 +1177,27 @@
         <state relative-caret-position="120">
           <caret line="8" column="4" lean-forward="false" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/CalculatorEnum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="533">
+          <caret line="61" column="12" lean-forward="false" selection-start-line="61" selection-start-column="12" selection-end-line="61" selection-end-column="12" />
+          <folding>
+            <element signature="e#260#261#0" expanded="true" />
+            <element signature="e#304#305#0" expanded="true" />
+            <element signature="e#417#418#0" expanded="true" />
+            <element signature="e#461#462#0" expanded="true" />
+            <element signature="e#577#578#0" expanded="true" />
+            <element signature="e#621#622#0" expanded="true" />
+            <element signature="e#735#736#0" expanded="true" />
+            <element signature="e#779#780#0" expanded="true" />
+            <element signature="e#864#865#0" expanded="true" />
+            <element signature="e#906#907#0" expanded="true" />
+            <element signature="e#941#942#0" expanded="true" />
+            <element signature="e#977#978#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

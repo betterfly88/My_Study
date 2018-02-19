@@ -7,25 +7,25 @@ package service;
 
 public class CalculatorEnum {
     enum Calculation{
-        PLUS("+"){
+        PLUS("\\+"){
             @Override
             public double Calculator(double a, double b){
                 return a + b;
             }
         },
-        MINUS("-"){
+        MINUS("\\-"){
             @Override
             public double Calculator(double a, double b){
                 return a - b;
             }
         },
-        MULTIPLY("*"){
+        MULTIPLY("\\*"){
             @Override
             public double Calculator(double a, double b){
                 return a * b;
             }
         },
-        DIVIDE("/"){
+        DIVIDE("\\/"){
             @Override
             public double Calculator(double a, double b){
                 return a / b;
@@ -43,5 +43,26 @@ public class CalculatorEnum {
         }
 
         public abstract double Calculator(double a, double b);
+    }
+
+
+    public static void main(String [] args){
+        String a = "2 + 3";
+        a = a.replaceAll(" ","");
+        String [] dd = a.split(Calculation.PLUS.getValue());
+
+//        for(int i=0; i<dd.length; i++){
+//            int temp = Integer.parseInt(dd[i]);
+//            System.out.println(temp);
+//        }
+
+        for(String s : dd){
+//            System.out.println(s);
+            s.replaceAll(" ","");
+            int temp = Integer.parseInt(s);
+            System.out.println(temp);
+
+        }
+
     }
 }
