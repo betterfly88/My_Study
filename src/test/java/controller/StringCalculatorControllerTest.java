@@ -1,17 +1,16 @@
-package calculator;
+package controller;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.assertj.core.api.Assertions.*;
 
 /**
  * Created by betterFLY on 2018. 2. 18.
  * Github : http://github.com/betterfly88
  */
 
-public class StringCalculatorTest {
+public class StringCalculatorControllerTest {
     /*
         1) 기능 요구 사항
             사용자가 입력한 문자열에 따라 사칙 연산을 수행하는 계산기 구현.
@@ -22,11 +21,11 @@ public class StringCalculatorTest {
         3) 추가 요구 사항(선택 사항)
             사칙 연산을 구현하면 4개의 if문을 사용하는 코드가 발생하는데, 자바의 다형성을 이용하여 if문을 모두 제거해볼 것.
     */
-    StringCalculator sc;
+    StringCalculatorController sc;
 
     @Before
     public void setUp(){
-        sc = new StringCalculator();
+        sc = new StringCalculatorController();
     }
 
     @Test

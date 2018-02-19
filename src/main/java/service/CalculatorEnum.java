@@ -8,14 +8,29 @@ package service;
 public class CalculatorEnum {
     enum Calculation{
         PLUS("+"){
-            public double calcualtor(double a, double b){
+            @Override
+            public double Calculator(double a, double b){
                 return a + b;
             }
-        }
-                ;
-//        MINUS("-"),
-//        MULTIPLY("*"),
-//        DIVIDE("/");
+        },
+        MINUS("-"){
+            @Override
+            public double Calculator(double a, double b){
+                return a - b;
+            }
+        },
+        MULTIPLY("*"){
+            @Override
+            public double Calculator(double a, double b){
+                return a * b;
+            }
+        },
+        DIVIDE("/"){
+            @Override
+            public double Calculator(double a, double b){
+                return a / b;
+            }
+        };
 
         final private String value;
 
@@ -26,10 +41,7 @@ public class CalculatorEnum {
         public String getValue(){
             return value;
         }
-    }
 
-    public static void main(String [] args){
-        System.out.println("이거 뭐임 ?"+Calculation.PLUS.getValue());
-        System.out.println(Calculation.PLUS);
+        public abstract double Calculator(double a, double b);
     }
 }
