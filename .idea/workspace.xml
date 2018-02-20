@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1e5f7cd7-ea4c-4330-ab39-c988bb98fb9a" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/service/CalculatorEnum$Calculation.class" afterPath="$PROJECT_DIR$/out/production/classes/service/CalculatorEnum$Calculation.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/classes/service/CalculatorEnum.class" afterPath="$PROJECT_DIR$/out/production/classes/service/CalculatorEnum.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/service/CalculatorEnum.java" afterPath="$PROJECT_DIR$/src/main/java/service/CalculatorEnum.java" />
@@ -71,22 +72,26 @@
       <file leaf-file-name="CalculatorEnum.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/service/CalculatorEnum.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="519">
-              <caret line="63" column="51" lean-forward="false" selection-start-line="63" selection-start-column="51" selection-end-line="63" selection-end-column="51" />
+            <state relative-caret-position="556">
+              <caret line="70" column="12" lean-forward="true" selection-start-line="70" selection-start-column="12" selection-end-line="70" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#310#311#0" expanded="true" />
                 <element signature="e#354#355#0" expanded="true" />
-                <element signature="e#467#468#0" expanded="true" />
-                <element signature="e#511#512#0" expanded="true" />
-                <element signature="e#627#628#0" expanded="true" />
-                <element signature="e#671#672#0" expanded="true" />
-                <element signature="e#785#786#0" expanded="true" />
-                <element signature="e#829#830#0" expanded="true" />
-                <element signature="e#914#915#0" expanded="true" />
-                <element signature="e#956#957#0" expanded="true" />
-                <element signature="e#991#992#0" expanded="true" />
-                <element signature="e#1027#1028#0" expanded="true" />
+                <element signature="e#465#466#0" expanded="true" />
+                <element signature="e#509#510#0" expanded="true" />
+                <element signature="e#623#624#0" expanded="true" />
+                <element signature="e#667#668#0" expanded="true" />
+                <element signature="e#779#780#0" expanded="true" />
+                <element signature="e#823#824#0" expanded="true" />
+                <element signature="e#908#909#0" expanded="true" />
+                <element signature="e#950#951#0" expanded="true" />
+                <element signature="e#985#986#0" expanded="true" />
+                <element signature="e#1021#1022#0" expanded="true" />
+                <element signature="e#1176#1177#0" expanded="true" />
+                <element signature="e#1231#1232#0" expanded="true" />
+                <element signature="e#1983#1984#0" expanded="true" />
+                <element signature="e#2044#2045#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -877,7 +882,7 @@
       <option name="presentableId" value="Default" />
       <updated>1518938175659</updated>
       <workItem from="1518938182855" duration="6373000" />
-      <workItem from="1519047535867" duration="7243000" />
+      <workItem from="1519047535867" duration="8757000" />
     </task>
     <servers />
   </component>
@@ -911,10 +916,11 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13616000" />
+    <option name="totallyTimeSpent" value="15130000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -936,7 +942,7 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297619" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -962,15 +968,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/service/CalculatorEnum.java</url>
-          <line>58</line>
-          <properties />
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="5" />
+      <option name="time" value="9" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1187,22 +1185,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/service/CalculatorEnum.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="519">
-          <caret line="63" column="51" lean-forward="false" selection-start-line="63" selection-start-column="51" selection-end-line="63" selection-end-column="51" />
+        <state relative-caret-position="556">
+          <caret line="70" column="12" lean-forward="true" selection-start-line="70" selection-start-column="12" selection-end-line="70" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#310#311#0" expanded="true" />
             <element signature="e#354#355#0" expanded="true" />
-            <element signature="e#467#468#0" expanded="true" />
-            <element signature="e#511#512#0" expanded="true" />
-            <element signature="e#627#628#0" expanded="true" />
-            <element signature="e#671#672#0" expanded="true" />
-            <element signature="e#785#786#0" expanded="true" />
-            <element signature="e#829#830#0" expanded="true" />
-            <element signature="e#914#915#0" expanded="true" />
-            <element signature="e#956#957#0" expanded="true" />
-            <element signature="e#991#992#0" expanded="true" />
-            <element signature="e#1027#1028#0" expanded="true" />
+            <element signature="e#465#466#0" expanded="true" />
+            <element signature="e#509#510#0" expanded="true" />
+            <element signature="e#623#624#0" expanded="true" />
+            <element signature="e#667#668#0" expanded="true" />
+            <element signature="e#779#780#0" expanded="true" />
+            <element signature="e#823#824#0" expanded="true" />
+            <element signature="e#908#909#0" expanded="true" />
+            <element signature="e#950#951#0" expanded="true" />
+            <element signature="e#985#986#0" expanded="true" />
+            <element signature="e#1021#1022#0" expanded="true" />
+            <element signature="e#1176#1177#0" expanded="true" />
+            <element signature="e#1231#1232#0" expanded="true" />
+            <element signature="e#1983#1984#0" expanded="true" />
+            <element signature="e#2044#2045#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -16,19 +16,19 @@ public class CalculatorEnum {
                 return a + b;
             }
         },
-        MINUS("\\-"){
+        MINUS("-"){
             @Override
             public double Calculator(double a, double b){
                 return a - b;
             }
         },
-        MULTIPLY("\\*"){
+        MULTIPLY("*"){
             @Override
             public double Calculator(double a, double b){
                 return a * b;
             }
         },
-        DIVIDE("\\/"){
+        DIVIDE("/"){
             @Override
             public double Calculator(double a, double b){
                 return a / b;
@@ -46,34 +46,40 @@ public class CalculatorEnum {
         }
 
         public abstract double Calculator(double a, double b);
+
+        // 연산값이 어떤거랑 매칭되는지 검증해주기
+        public boolean matchingExpression(String value){
+            return this.value.equals(value);
+        }
     }
-
-
     public static void main(String [] args){
-        String a = "2  +   3";
+        String a = "23  +   3";
         a = a.replaceAll(" ","");
-//        String [] dd = a.split(Calculation.PLUS.getValue());
+//        String
+// [] dd = a.split(Calculation.PLUS.getValue());
 
         List stringList = new ArrayList<String>();
-
         for(int i=0 ; i<a.length(); i++){
 //            System.out.print(a.charAt(i));
-            final String getNum = new String(new char[] { a.charAt(i) }, 0, 1);
-
-            if(getNum.equals(Calculation.PLUS.getValue())){
-                getNum.split(Calculation.PLUS.value);
-                stringList.add(getNum);
-                System.out.println("!?"+stringList);
-            }
+            String getNum = new String(new char[] { a.charAt(i) }, 0, 1);
+            stringList.add(getNum);
         }
+        System.out.println(stringList);
 
-
-//        for(String s : dd){
-////            System.out.println(s);
-//            s.replaceAll(" ","");
-//            int temp = Integer.parseInt(s);
-//            System.out.println(temp);
-//        }
+        for(int i=0; i<stringList.size(); i++){
+            System.out.println(stringList.get(i) + " /// " +stringList.get(i).equals(Calculation.PLUS.getValue()));
+            
+        }
     }
+
+    public String Calculation(Calculation cal, double x1, double x2)
+    {
+        return String.valueOf(cal.Calculator(x1, x2));
+    }
+
+
+
+
+
 
 }
