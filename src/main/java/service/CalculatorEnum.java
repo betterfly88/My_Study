@@ -75,16 +75,6 @@ public class CalculatorEnum {
 //
 //        }
 
-        try{
-            double x=3;
-            double y=5;
-            String z="*";
-
-            System.out.println("??? "+Calculation.valueOf("ABCD"));
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
 
     }
 }
