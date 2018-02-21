@@ -68,18 +68,17 @@ public class CalculatorEnum {
 
         for(int i=0; i<stringList.size(); i++){
             System.out.println(stringList.get(i) + " /// " +stringList.get(i).equals(Calculation.PLUS.getValue()));
-            
+
         }
+
+
+        String sss = Calculation(Calculation.PLUS,1,2 );
+        System.out.println(sss);
     }
 
-    public String Calculation(Calculation cal, double x1, double x2)
+    public static String Calculation(Calculation cal, double x1, double x2)
     {
         return String.valueOf(cal.Calculator(x1, x2));
     }
-
-
-
-
-
 
 }
