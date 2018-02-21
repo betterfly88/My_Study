@@ -28,6 +28,7 @@ public class CalculatorEnum {
                 return a * b;
             }
         },
+
         DIVIDE("/"){
             @Override
             public double Calculator(double a, double b){
@@ -51,34 +52,39 @@ public class CalculatorEnum {
         public boolean matchingExpression(String value){
             return this.value.equals(value);
         }
+
     }
+
+    public static String Calculation(Calculation cal, double x1, double x2) {
+        return String.valueOf(cal.Calculator(x1, x2));
+    }
+
     public static void main(String [] args){
         String a = "23  +   3";
         a = a.replaceAll(" ","");
-//        String
-// [] dd = a.split(Calculation.PLUS.getValue());
 
         List stringList = new ArrayList<String>();
         for(int i=0 ; i<a.length(); i++){
-//            System.out.print(a.charAt(i));
             String getNum = new String(new char[] { a.charAt(i) }, 0, 1);
             stringList.add(getNum);
         }
         System.out.println(stringList);
 
-        for(int i=0; i<stringList.size(); i++){
-            System.out.println(stringList.get(i) + " /// " +stringList.get(i).equals(Calculation.PLUS.getValue()));
+//        for(int i=0; i<stringList.size(); i++){
+//            System.out.println(stringList.get(i) + " /// " +stringList.get(i).equals(Calculation.PLUS.getValue()));
+//
+//        }
 
+        try{
+            double x=3;
+            double y=5;
+            String z="*";
+
+            System.out.println("??? "+Calculation.valueOf("ABCD"));
+
+        }catch (Exception e){
+            e.printStackTrace();
         }
 
-
-        String sss = Calculation(Calculation.PLUS,1,2 );
-        System.out.println(sss);
     }
-
-    public static String Calculation(Calculation cal, double x1, double x2)
-    {
-        return String.valueOf(cal.Calculator(x1, x2));
-    }
-
 }
