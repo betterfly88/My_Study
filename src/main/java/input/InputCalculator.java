@@ -1,5 +1,7 @@
 package input;
 
+import service.CalculatorHandler;
+
 import java.util.Scanner;
 
 /**
@@ -8,10 +10,13 @@ import java.util.Scanner;
  */
 
 public class InputCalculator {
-    public String inputValue(){
+
+    static CalculatorHandler handler;
+
+    public static double executeCalculator(){
         Scanner sc = new Scanner(System.in);
         String value = sc.nextLine();
 
-        return value;
+        return handler.resultCalculator(value);
     }
 }

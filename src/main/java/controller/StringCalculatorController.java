@@ -8,11 +8,10 @@ import input.InputCalculator;
  */
 
 public class StringCalculatorController {
-    public static void main(String [] args){
-        InputCalculator ic = new InputCalculator();
-        String result = ic.inputValue();
 
-        System.out.println(result);
+    public static void main(String[] args) {
+        double result = InputCalculator.executeCalculator();
+
+        System.out.println("결과 : "+result);
     }
-
 }

@@ -6,6 +6,5 @@ package service;
  */
 
 public interface CalculatorService {
-
     double Calculator(double a, double b);
 }
