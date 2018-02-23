@@ -11,12 +11,8 @@ import java.util.Scanner;
 
 public class CalculatorDao {
 
-    static CalculatorHandler handler;
-
-    public static double executeCalculator(){
+    public static String executeCalculator(){
         Scanner sc = new Scanner(System.in);
-        String value = sc.nextLine();
-
-        return handler.resultCalculator(value);
+        return sc.nextLine();
     }
 }
