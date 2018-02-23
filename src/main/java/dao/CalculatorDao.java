@@ -1,6 +1,6 @@
-package input;
+package dao;
 
-import service.CalculatorHandler;
+import handler.CalculatorHandler;
 
 import java.util.Scanner;
 
@@ -9,7 +9,7 @@ import java.util.Scanner;
  * Github : http://github.com/betterfly88
  */
 
-public class InputCalculator {
+public class CalculatorDao {
 
     static CalculatorHandler handler;
 

@@ -1,4 +1,4 @@
-package service;
+package dto;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,8 +8,8 @@ import java.util.Map;
  * Github : http://github.com/betterfly88
  */
 
-public class CalculatorServiceImpl {
-    public enum Calculate implements CalculatorService{
+public class CalculatorDto {
+    public enum Calculate implements Calculator {
         PLUS("+"){
             @Override
             public double Calculator(double a, double b) {

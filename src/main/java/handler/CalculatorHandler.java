@@ -1,6 +1,7 @@
-package service;
+package handler;
 
 import common.Utils;
+import dto.CalculatorDto;
 
 import java.util.ArrayList;
 
@@ -13,12 +14,12 @@ import static java.lang.Double.parseDouble;
 
 public class CalculatorHandler {
 
-    private static CalculatorServiceImpl.Calculate calcuate;
+    private static CalculatorDto.Calculate calcuate;
     private static Utils utils;
 
     // 중간 연산
     public static double invokeCalculator(String operator, double a, double b) {
-        CalculatorServiceImpl.Calculate operation = CalculatorServiceImpl.Calculate.operatorCheck(operator);
+        CalculatorDto.Calculate operation = CalculatorDto.Calculate.operatorCheck(operator);
         return operation.Calculator(a,b);
     }
 
