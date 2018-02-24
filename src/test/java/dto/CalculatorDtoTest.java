@@ -24,8 +24,8 @@ public class CalculatorDtoTest {
 
 //        Assertions.assertThat(CalculatorDto.Calculate.valueOf("PLUS")).isEqualTo(PLUS);
         Assertions.assertThat(CalculatorDto.Calculate.PLUS.getOperator()).isEqualTo("+");
-        Assertions.assertThat(CalculatorDto.Calculate.matchedExpression("+")).isEqualTo(true);
-        Assertions.assertThat(CalculatorDto.Calculate.matchedExpression("^")).isEqualTo(false);
+        Assertions.assertThat(CalculatorDto.Calculate.matchingExpression("+")).isEqualTo(true);
+        Assertions.assertThat(CalculatorDto.Calculate.matchingExpression("^")).isEqualTo(false);
 
         Assertions.assertThat(CalculatorDto.Calculate.operatorCheck("+")).isEqualTo(CalculatorDto.Calculate.PLUS);
         Assertions.assertThat(CalculatorDto.Calculate.PLUS.Calculator(4, 5)).isEqualTo(9.0);

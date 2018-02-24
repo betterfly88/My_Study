@@ -64,7 +64,7 @@ public class CalculatorDto {
         }
 
         // 걊 존재 유무체크
-        public static boolean matchedExpression(String operator) {
+        public static boolean matchingExpression(String operator) {
             return requestMapping.containsKey(operator);
         }
     }

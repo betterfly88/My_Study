@@ -12,7 +12,7 @@ import static java.lang.Double.parseDouble;
  * Github : http://github.com/betterfly88
  */
 
-public class CalculatorHandler {
+public class CalculatorHandler{
 
     private static CalculatorDto.Calculate calcuate;
     private static Utils utils;
@@ -31,7 +31,7 @@ public class CalculatorHandler {
         //배열에 수식이 있는 경우 [-1 0 +1]  이기 때문에, 0 기준 [-1 연산 +1]
         double result = parseDouble(arrayList.get(0));
         for(int i=0; i<arrayList.size(); i++){
-            if(calcuate.matchedExpression(arrayList.get(i))){
+            if(calcuate.matchingExpression(arrayList.get(i))){
                 result = calHandler.invokeCalculator(arrayList.get(i),result,parseDouble(arrayList.get(i+1)));
             }
         }
