@@ -1,7 +1,5 @@
 package OOP.StopWatch;
 
-import java.sql.Time;
-
 /**
  * Created by betterFLY on 2018. 2. 25.
  * Github : http://github.com/betterfly88
