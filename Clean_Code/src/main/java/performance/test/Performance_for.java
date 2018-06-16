@@ -4,8 +4,12 @@ package performance.test;
 import java.lang.reflect.Array;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
+import java.util.function.IntConsumer;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.*;
 
 /**
  * Created by betterFLY on 2018. 6. 13.
@@ -26,7 +30,7 @@ public class Performance_for {
             return generator(max);
         });
 
-        List<Integer> arrayList = Arrays.asList(array);
+//        List<Integer> arrayList = Arrays.asList(array);
 
         intStream();
 //        performanceByWhile(array);
@@ -35,12 +39,23 @@ public class Performance_for {
     }
 
     private static void intStream(){
-//        IntStream is = new Random().ints();
-
-        Stream<Integer> st = Stream.generate(()->1);
-        System.out.println(st.toArray());
-
+//        IntStream is = new Random().ints(5);
 //        is.limit(100).forEach(System.out::println);
+
+        List<Integer> intList = new ArrayList<>();
+        IntStream intStream = new Random().ints(1,100).distinct().limit(100);
+
+
+        List<Integer> list = Arrays.asList(generator(100));
+
+        for(int a : list){
+            System.out.println(a);
+        }
+
+//        List<Integer> newList = list.stream()
+//                .forEach(i -> generator(100))
+//                .collect(Collectors.toList());
+//        System.out.println(newList.size());
     }
 
     private static int generator(int max){
