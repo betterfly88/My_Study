@@ -1,22 +1,18 @@
 package performance.test;
 
 
-import java.lang.reflect.Array;
-import java.util.*;
-import java.util.concurrent.TimeUnit;
-import java.util.function.IntConsumer;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Random;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
-
-import static java.util.stream.Collectors.*;
 
 /**
  * Created by betterFLY on 2018. 6. 13.
  * Github : http://github.com/betterfly88
  */
 
-public class Performance_for {
+public class PerformanceAddFor {
     static TimerUtil timer = new TimerUtil();
     static int result = 0;
 
@@ -24,11 +20,7 @@ public class Performance_for {
     public static void main (String [] args){
         int max = 100;
 
-        List<Integer> sumArr = new ArrayList<>();
-        IntStream.range(0, 20000)
-                .forEach(i -> sumArr.add(generator(max)));
-
-
+        List<Integer> sumArr = intStream();
 //        intStream();
 //        for(int i=0; i<10; i++){
 //
@@ -39,8 +31,6 @@ public class Performance_for {
         performanceByForLoop(sumArr);
         performanceByForEach(sumArr);
         performanceByIterator(sumArr);
-
-
     }
 
     private static List<Integer> intStream(){
@@ -135,17 +125,4 @@ public class Performance_for {
         return timer.end();
     }
 
-}
-
-class TimerUtil {
-    long time;
-
-    public void start(){
-        time = System.nanoTime();
-    }
-
-    public double end(){
-        System.out.println("compute result : " + (System.nanoTime()-time)/ 1000000000.0);
-        return (System.nanoTime()-time)/ 1000000000.0;
-    }
 }
