@@ -18,19 +18,29 @@ public class PerformanceAddFor {
 
 
     public static void main (String [] args){
-        int max = 100;
-
         List<Integer> sumArr = intStream();
-//        intStream();
-//        for(int i=0; i<10; i++){
-//
-//        }
 
-        performanceByWhile(sumArr);
-        performanceByFor(sumArr);
-        performanceByForLoop(sumArr);
-        performanceByForEach(sumArr);
-        performanceByIterator(sumArr);
+
+        int maxCnt = 10000;
+        double sumTimes = 0;
+
+        for(int cnt = 0; cnt<maxCnt; cnt++){
+//        sumTimes += performanceByIterator(sumArr);
+//        sumTimes += performanceByWhile(sumArr);
+//        sumTimes += performanceByFor(sumArr);
+//        sumTimes += performanceByForLoop(sumArr);
+        sumTimes += performanceByForEach(sumArr);
+
+        }
+        sumTimes *= 1000;
+
+        System.out.println("Result Time : "+resultAvg(sumTimes, maxCnt));
+    }
+
+    private static double resultAvg(double times, int maxCnt){
+        double result = Math.round(times/maxCnt * 100) / 100.0;
+
+        return result;
     }
 
     private static List<Integer> intStream(){
@@ -50,12 +60,10 @@ public class PerformanceAddFor {
         /*
             while
          */
-        System.out.println("while");
         result = 0;
 
         timer.start();
         int s=0;
-//        int size = array.size();
         while(s<array.size()){
             result += array.get(s);
             s++;
@@ -67,7 +75,6 @@ public class PerformanceAddFor {
         /*
             for
          */
-        System.out.println("basic for");
         result = 0;
 
         timer.start();
@@ -81,7 +88,6 @@ public class PerformanceAddFor {
         /*
             for loop
          */
-        System.out.println("for loop");
         result = 0;
 
         timer.start();
@@ -95,7 +101,6 @@ public class PerformanceAddFor {
         /*
             for each
          */
-        System.out.println("for each");
         result = 0;
 
         timer.start();
@@ -109,20 +114,17 @@ public class PerformanceAddFor {
 
     private static double performanceByIterator(List<Integer> array){
         /*
-            for each
+            iterator
          */
-        System.out.println("iterator");
         result = 0;
 
         timer.start();
 
         Iterator<Integer> itr = array.iterator();
-
         while( itr.hasNext() ){
             result += array.get(itr.next());
         }
 
         return timer.end();
     }
-
 }

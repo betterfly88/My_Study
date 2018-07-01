@@ -145,7 +145,7 @@ class TimerUtil {
     }
 
     public double end(){
-        System.out.println("compute result : " + (System.nanoTime()-time)/ 1000000000.0);
-        return (System.nanoTime()-time)/ 1000000000.0;
+//        System.out.println("compute result : " + (System.nanoTime()-time)/ 1000000.0);
+        return (System.nanoTime()-time)/ 1000000.0;
     }
 }
