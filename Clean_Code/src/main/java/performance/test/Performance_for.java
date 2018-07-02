@@ -1,15 +1,8 @@
 package performance.test;
 
 
-import java.lang.reflect.Array;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
-import java.util.function.IntConsumer;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
-
-import static java.util.stream.Collectors.*;
 
 /**
  * Created by betterFLY on 2018. 6. 13.
@@ -137,15 +130,15 @@ public class Performance_for {
 
 }
 
-class TimerUtil {
-    long time;
-
-    public void start(){
-        time = System.nanoTime();
-    }
-
-    public double end(){
-//        System.out.println("compute result : " + (System.nanoTime()-time)/ 1000000.0);
-        return (System.nanoTime()-time)/ 1000000.0;
-    }
-}
+//public class TimerUtil {
+//    long time;
+//
+//    public void start(){
+//        time = System.nanoTime();
+//    }
+//
+//    public double end(){
+////        System.out.println("compute result : " + (System.nanoTime()-time)/ 1000000.0);
+//        return (System.nanoTime()-time)/ 1000000.0;
+//    }
+//}

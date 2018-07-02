@@ -20,21 +20,26 @@ public class PerformanceAddFor {
     public static void main (String [] args){
         List<Integer> sumArr = intStream();
 
+        long timeAvg = 0;
+        for(int i=0; i<11; i++){
+            int maxCnt = 10000;
+            double sumTimes = 0;
+            for(int cnt = 0; cnt<maxCnt; cnt++){
+//              sumTimes += performanceByIterator(sumArr);
+//            sumTimes += performanceByWhile(sumArr);
+//            sumTimes += performanceByFor(sumArr);
+//            sumTimes += performanceByForLoop(sumArr);
+            sumTimes += performanceByForEach(sumArr);
+            }
+            sumTimes *= 100000;
 
-        int maxCnt = 10000;
-        double sumTimes = 0;
-
-        for(int cnt = 0; cnt<maxCnt; cnt++){
-//        sumTimes += performanceByIterator(sumArr);
-//        sumTimes += performanceByWhile(sumArr);
-//        sumTimes += performanceByFor(sumArr);
-//        sumTimes += performanceByForLoop(sumArr);
-        sumTimes += performanceByForEach(sumArr);
-
+            System.out.println("Result Time : "+resultAvg(sumTimes, maxCnt));
+            if(i > 1){
+                timeAvg += resultAvg(sumTimes, maxCnt);
+            }
         }
-        sumTimes *= 1000;
-
-        System.out.println("Result Time : "+resultAvg(sumTimes, maxCnt));
+        System.out.println(timeAvg);
+        System.out.println(timeAvg/10.0);
     }
 
     private static double resultAvg(double times, int maxCnt){
