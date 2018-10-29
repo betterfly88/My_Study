@@ -12,7 +12,8 @@ scp.sh
 .springBeans
 
 ### IntelliJ IDEA ###
-.idea
+.gradle/
+.idea/
 *.iws
 *.iml
 *.ipr
