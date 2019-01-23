@@ -1,7 +1,9 @@
 package designpattern;
 
-import designpattern.prototype.ChocoCookie;
-import designpattern.prototype.Cookie;
+import designpattern.prototype.game.Diablo;
+import designpattern.prototype.game.Monster;
+import designpattern.prototype.shape.Shape;
+import designpattern.prototype.shape.ShapeCache;
 
 /**
  * Created by betterfly
@@ -9,17 +11,29 @@ import designpattern.prototype.Cookie;
  */
 public class main {
     public static void main(String[] args) {
-        ChocoCookie choco = new ChocoCookie();
-        choco.setName("초코 쿠키맨");
-        choco.setSize(10);
-        ChocoCookie brown = choco;
-        brown.setName("브라운 맨");
-        brown.setSize(100);
+        Monster diablo = new Diablo();
+        System.out.println(diablo.getName());
+        System.out.println(diablo.getType());
 
-        System.out.println("초코 쿠키 : "+choco.getName());
-        System.out.println("초코 쿠키 크기 " + choco.getSize());
+        Monster anda = diablo;
+        anda.setName("안다리엘");
+        anda.setType("1차 왕");
+        System.out.println(anda.getName());
+        System.out.println(anda.getType());
 
-        System.out.println("브라운 쿠키 : "+brown.getName());
-        System.out.println("브라운 쿠키 크기 " + brown.getSize());
+        System.out.println(diablo.getName());
+        System.out.println(diablo.getType());
+    }
+
+    public static void shapeExecutor(){
+        ShapeCache.loadCache();
+
+        Shape circle = ShapeCache.getShape("1");
+        System.out.println(circle.getType());
+
+        Shape rectangle = ShapeCache.getShape("2");
+        System.out.println(rectangle.getType());
+        rectangle = ShapeCache.getShape("1");
+        System.out.println(rectangle.getType());
     }
 }
