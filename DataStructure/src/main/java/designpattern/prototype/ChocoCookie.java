@@ -6,7 +6,7 @@ import designpattern.prototype.Cookie;
  * Created by betterfly
  * Date : 2019.01.23
  */
-public class ChocoCookie  extends Cookie {
+public class ChocoCookie extends Cookie {
     private String name;
     private int size;
 
