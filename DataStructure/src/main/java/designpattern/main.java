@@ -11,18 +11,20 @@ import designpattern.prototype.shape.ShapeCache;
  */
 public class main {
     public static void main(String[] args) {
-        Monster diablo = new Diablo();
-        System.out.println(diablo.getName());
-        System.out.println(diablo.getType());
+//        Monster diablo = new Diablo();
+//        System.out.println(diablo.getName());
+//        System.out.println(diablo.getType());
+//
+//        Monster anda = diablo;
+//        anda.setName("안다리엘");
+//        anda.setType("1차 왕");
+//        System.out.println(anda.getName());
+//        System.out.println(anda.getType());
+//
+//        System.out.println(diablo.getName());
+//        System.out.println(diablo.getType());
 
-        Monster anda = diablo;
-        anda.setName("안다리엘");
-        anda.setType("1차 왕");
-        System.out.println(anda.getName());
-        System.out.println(anda.getType());
-
-        System.out.println(diablo.getName());
-        System.out.println(diablo.getType());
+        shapeExecutor();
     }
 
     public static void shapeExecutor(){
