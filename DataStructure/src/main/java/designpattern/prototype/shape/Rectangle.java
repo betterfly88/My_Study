@@ -1,6 +1,4 @@
-package designpattern.prototype;
-
-import org.w3c.dom.css.Rect;
+package designpattern.prototype.shape;
 
 /**
  * Created by betterfly

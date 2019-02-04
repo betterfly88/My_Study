@@ -1,4 +1,4 @@
-package designpattern.mongo;
+package designpattern.prototype.mongo;
 
 /**
  * Created by betterfly

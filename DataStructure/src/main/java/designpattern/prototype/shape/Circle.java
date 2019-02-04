@@ -1,6 +1,4 @@
-package designpattern.prototype;
-
-import sun.security.provider.SHA;
+package designpattern.prototype.shape;
 
 /**
  * Created by betterfly

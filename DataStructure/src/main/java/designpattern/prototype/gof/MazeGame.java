@@ -5,4 +5,5 @@ package designpattern.prototype.gof;
  * Date : 2019.01.27
  */
 public class MazeGame {
+
 }
