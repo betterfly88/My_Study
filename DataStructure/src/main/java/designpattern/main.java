@@ -1,7 +1,5 @@
 package designpattern;
 
-import designpattern.prototype.game.Diablo;
-import designpattern.prototype.game.Monster;
 import designpattern.prototype.shape.Shape;
 import designpattern.prototype.shape.ShapeCache;
 
@@ -20,9 +18,6 @@ public class main {
 //        anda.setType("1차 왕");
 //        System.out.println(anda.getName());
 //        System.out.println(anda.getType());
-//
-//        System.out.println(diablo.getName());
-//        System.out.println(diablo.getType());
 
         shapeExecutor();
     }
