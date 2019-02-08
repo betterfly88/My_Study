@@ -72,7 +72,12 @@ public class MyArrayList<T> implements List<T> {
 
     @Override
     public boolean remove(Object o) {
-        return false;
+        int idx = indexOf(o);
+        if(idx == -1){
+            return false;
+        }
+        remove(idx);
+        return true;
     }
 
     @Override
@@ -92,7 +97,12 @@ public class MyArrayList<T> implements List<T> {
 
     @Override
     public boolean removeAll(Collection<?> c) {
-        return false;
+        boolean flag = false;
+
+        for(Object o : c){
+            flag  &= remove(o);
+        }
+        return flag;
     }
 
     @Override
@@ -150,18 +160,13 @@ public class MyArrayList<T> implements List<T> {
     }
 
 
-    /*
-        array size = 5;
-        index 3;
-
-     */
     @Override
     public T remove(int index) {
         T prevVal = get(index);
-        int cnt = size - index;
-        for(int i=index; i<=cnt; i++){
+        for(int i=index; i<size-1; i++){
             array[i] = array[i+1];
         }
+
         size --;
 
         return prevVal;
