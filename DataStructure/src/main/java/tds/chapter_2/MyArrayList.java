@@ -175,8 +175,10 @@ public class MyArrayList<T> implements List<T> {
     /*
         (o==null ? get(i)==null : o.equals(get(i)))
 
-        Returns the index of the first occurrence of the specified element in this list, or -1 if this list does not contain the element.
-        More formally, returns the lowest index i such that (o==null ? get(i)==null : o.equals(get(i))), or -1 if there is no such index.
+        Returns the index of the first occurrence of the specified element in this list,
+        or -1 if this list does not contain the element.
+        More formally, returns the lowest index i such that
+        (o==null ? get(i)==null : o.equals(get(i))), or -1 if there is no such index.
 
         Parameters:
         o - element to search for

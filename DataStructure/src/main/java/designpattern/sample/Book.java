@@ -1,8 +1,8 @@
-package designpattern.slipp;
+package designpattern.sample;
 
 /**
  * Created by betterfly
- * Date : 2019.01.30
+ * Date : 2019.02.13
  */
 public class Book {
     private int serial;
