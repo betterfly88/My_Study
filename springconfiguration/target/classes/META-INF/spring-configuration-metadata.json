@@ -1,0 +1,23 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.betterfly.BookProperties",
+      "name": "book",
+      "type": "com.betterfly.BookProperties"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.betterfly.BookProperties",
+      "defaultValue": 0,
+      "name": "book.serial",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.betterfly.BookProperties",
+      "name": "book.title",
+      "type": "java.lang.String"
+    }
+  ]
+}

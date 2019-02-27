@@ -1,0 +1,5 @@
+META-INF/spring-autoconfigure-metadata.properties
+META-INF/spring-configuration-metadata.json
+com/betterfly/BookProperties.class
+com/betterfly/BookConfiguration.class
+com/betterfly/Book.class
