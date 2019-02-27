@@ -2,18 +2,18 @@ package designpattern.prototype;
 
 /**
  * Created by betterfly
- * Date : 2019.02.14
+ * Date : 2019.02.27
  */
 public class Book {
-    private int serail;
     private String title;
+    private int serial;
 
-    public int getSerail() {
-        return serail;
-    }
-
-    public void setSerail(int serail) {
-        this.serail = serail;
+    @Override
+    public String toString() {
+        return "Book{" +
+                "title='" + title + '\'' +
+                ", serial=" + serial +
+                '}';
     }
 
     public String getTitle() {
@@ -24,11 +24,11 @@ public class Book {
         this.title = title;
     }
 
-    @Override
-    public String toString() {
-        return "Book{" +
-                "serail=" + serail +
-                ", title='" + title + '\'' +
-                '}';
+    public int getSerial() {
+        return serial;
+    }
+
+    public void setSerial(int serial) {
+        this.serial = serial;
     }
 }
