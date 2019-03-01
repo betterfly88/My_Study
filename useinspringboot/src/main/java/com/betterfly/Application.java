@@ -1,5 +1,6 @@
 package com.betterfly;
 
+import com.betterfly.listener.BootListener;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -12,8 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Application {
     public static void main(String[] args) {
         SpringApplication app = new SpringApplication(Application.class);
-        String [] arg = new String[1];
-        arg[0] = "--debug";
-        app.run(arg);
+        app.addListeners(new BootListener());
+        app.run(args);
     }
 }
