@@ -21,6 +21,9 @@ scp.sh
 target/*
 logs/*
 *.log
+target/
+*/target/*
+
 
 ### NetBeans ###
 nbproject/private/
