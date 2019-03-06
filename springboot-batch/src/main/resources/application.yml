@@ -1,0 +1,12 @@
+spring.profiles.active: local
+spring.batch.job.names: ${job.name:NONE}
+
+---
+spring:
+  profiles: local
+  datasource:
+    hikari:
+      jdbc-url: jdbc:mysql://betterfly-mysql.cgdjnvwdoibj.us-east-2.rds.amazonaws.com:3306/spring_batch?useSSL=false&autoReconnect=true&characterEncoding=UTF-8
+      username: betterfly
+      password: betterfly88
+      driver-class-name: com.mysql.jdbc.Driver
