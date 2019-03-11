@@ -12,13 +12,16 @@ import org.springframework.batch.core.configuration.annotation.StepBuilderFactor
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemWriter;
+import org.springframework.batch.item.database.JdbcBatchItemWriter;
 import org.springframework.batch.item.database.JdbcPagingItemReader;
+import org.springframework.batch.item.database.builder.JdbcBatchItemWriterBuilder;
 import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import javax.sql.DataSource;
 import java.util.List;
 import java.util.Map;
 
@@ -38,25 +41,20 @@ public class PushReceiveJobConfiguration {
 //    private BigQueryClient bigQueryClient;
     private Map<String, Integer> pushMap;
 
+    private static final int chunkSize = 10;
+
     @Bean
     public Job pushReceiveJob(){
         return jobBuilderFactory.get("pushReceiveJob")
-                .start(pushReceiveStep(null))
+                .start(getBigQueryStep(null))
+                    .on("FAILED")
+                    .end()
+                .from(getBigQueryStep(null))
+                    .on("*")
+                    .to(insertBatchResultStep())
+                    .end()
                 .build();
     }
-
-//    @Bean
-//    public Job pushReceiveJob(){
-//        return jobBuilderFactory.get("pushReceiveJob")
-//                .start(getBigQueryStep(null))
-//                    .on("FAILED")
-//                    .end()
-//                .from(getBigQueryStep(null))
-//                    .on("*")
-//                    .to(insertBatchResultStep())
-//                    .end()
-//                .build();
-//    }
 
     @Bean
     @JobScope
@@ -97,7 +95,7 @@ public class PushReceiveJobConfiguration {
     public Step pushReceiveStep(
             @Value("#{jobParameters[requestDate]}") String requestDate){
         return stepBuilderFactory.get("pushReceiveStep")
-                .<String, String> chunk(100)
+                .<String, String> chunk(chunkSize)
                 .reader(bigQueryItemReader(requestDate)) //bigquery 결과(detail) string return
                 .processor(bigQueryItemProcessor()) // json 화 시켜서 PushReceiveVO 맵핑
                 .writer(bigQueryItemWriter()) // mysql에 카운팅
@@ -140,5 +138,16 @@ public class PushReceiveJobConfiguration {
                 }
             }
         };
+    }
+
+    private final DataSource ds;
+
+    @Bean
+    public JdbcBatchItemWriter<String> jdbcBatchItemWriter(){
+        return new JdbcBatchItemWriterBuilder<String>()
+                .dataSource(ds)
+                .sql("update")
+                .beanMapped()
+                .build();
     }
 }
