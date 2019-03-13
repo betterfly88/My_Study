@@ -20,6 +20,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.task.TaskExecutor;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import javax.sql.DataSource;
 import java.util.List;
@@ -41,7 +43,20 @@ public class PushReceiveJobConfiguration {
 //    private BigQueryClient bigQueryClient;
     private Map<String, Integer> pushMap;
 
-    private static final int chunkSize = 10;
+    private static final int CHUNK_SIZE = 10;
+    private static final int CORE_TASK_POOL_SIZE = 8;
+    private static final int MAX_TASK_POOL_SIZE = 12;
+
+
+    @Bean
+    public TaskExecutor executor(){
+        ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
+        taskExecutor.setCorePoolSize(CORE_TASK_POOL_SIZE);
+        taskExecutor.setMaxPoolSize(MAX_TASK_POOL_SIZE);
+
+        return taskExecutor;
+    }
+
 
     @Bean
     public Job pushReceiveJob(){
@@ -95,10 +110,11 @@ public class PushReceiveJobConfiguration {
     public Step pushReceiveStep(
             @Value("#{jobParameters[requestDate]}") String requestDate){
         return stepBuilderFactory.get("pushReceiveStep")
-                .<String, String> chunk(chunkSize)
+                .<String, String> chunk(CHUNK_SIZE)
                 .reader(bigQueryItemReader(requestDate)) //bigquery 결과(detail) string return
                 .processor(bigQueryItemProcessor()) // json 화 시켜서 PushReceiveVO 맵핑
                 .writer(bigQueryItemWriter()) // mysql에 카운팅
+                .taskExecutor(executor())
                 .build();
     }
 
