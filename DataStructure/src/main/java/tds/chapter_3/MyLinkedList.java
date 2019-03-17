@@ -142,10 +142,25 @@ public class MyLinkedList<E> implements List<E> {
         return null;
     }
 
+
+    /*
+        Returns the index of the first occurrence of the specified element in this list,
+        or -1 if this list does not contain the element. More formally,
+        returns the lowest index i such that
+        (o==null ? get(i)==null : o.equals(get(i))), or -1 if there is no such index.
+     */
     @Override
     public int indexOf(Object o) {
+        Node node = head;
 
-        return 0;
+        for (int i=0; node != null; i++){
+            if(node.data.equals(o)){
+                return i;
+            }
+            node = node.next;
+        }
+
+        return -1;
     }
 
     @Override
