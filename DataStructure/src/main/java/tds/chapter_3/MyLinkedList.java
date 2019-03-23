@@ -149,18 +149,39 @@ public class MyLinkedList<E> implements List<E> {
         returns the lowest index i such that
         (o==null ? get(i)==null : o.equals(get(i))), or -1 if there is no such index.
      */
-    @Override
-    public int indexOf(Object o) {
-        Node node = head;
+//    @Override
+//    public int indexOf(Object o) {
+//        Node node = head;
+//
+//        for (int i=0; node != null; i++){
+//            if(node.data.equals(o)){
+//                return i;
+//            }
+//
+//            node = node.next;
+//        }
+//
+//        return -1;
+//    }
 
-        for (int i=0; node != null; i++){
-            if(node.data.equals(o)){
+    @Override
+    public int indexOf(Object target) {
+        Node node = head;
+        for (int i=0; i<size; i++) {
+            if (equals(target, node.data)) {
                 return i;
             }
             node = node.next;
         }
-
         return -1;
+    }
+
+    private boolean equals(Object target, Object element) {
+        if (target == null) {
+            return element == null;
+        } else {
+            return target.equals(element);
+        }
     }
 
     @Override
