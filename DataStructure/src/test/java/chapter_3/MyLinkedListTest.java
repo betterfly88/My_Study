@@ -6,6 +6,7 @@ import org.junit.Test;
 import tds.chapter_3.MyLinkedList;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -40,9 +41,11 @@ public class MyLinkedListTest {
     @Test
     public void testAddIntT() {
         mylist.add(1, 5);
-        //System.out.println(Arrays.toString(mal.toArray()));
+        mylist.add(2, 105);
+//        System.out.println(Arrays.toString(mal.toArray()));
         assertThat(mylist.get(1), is(new Integer(5)));
-        assertThat(mylist.size(), is(4));
+        assertThat(mylist.get(2), is(new Integer(105)));
+        assertThat(mylist.size(), is(5));
 
         try {
             mylist.set(-1, 0);
