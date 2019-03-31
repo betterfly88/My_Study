@@ -143,64 +143,77 @@ public class MyLinkedList<E> implements List<E> {
 
     @Override
     public E set(int index, E element) {
-        if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException();
-        }
-
-        Node node = head;
-
-        for(int i=0; i<size; i++){
-            if(i == index){
-                head.data = element;
-            }
-            node = head.next;
-        }
-
-        return null;
-    }
-
-    public static void main(String[] args) {
-        MyLinkedList list = new MyLinkedList();
-        list.add(1);
-        list.add(2);
-        list.add(3);
-        list.add(4);
-        list.add(5);
-        list.add(3, 100);
-    }
-
-    @Override
-    public void add(int index, E element) {
-        if(head == null){
-            throw new NullPointerException();
-        }
-
-        size++;
-
-
-        if (index ==0 ){
-            head = new Node(element, head);
-            return;
-        }
-
-        Node node = head;
-        for(int i=0; i<=index-1; i++){
-            node = node.next;
-        }
-        node.next = new Node(element, node.next);
+        Node node = getNode(index);
+        E old = node.data;
+        node.data = element;
+        return old;
     }
 
 //    @Override
 //    public void add(int index, E element) {
-//        // no need to check bounds; getNode does it.
-//        if (index == 0) {
-//            head = new Node(element, head);
-//        } else {
-//            Node node = getNode(index-1);
-//            node.next = new Node(element, node.next);
+//        if(head == null){
+//            throw new NullPointerException();
 //        }
+//
+//        size++;
+//
+//        if (index ==0 ){
+//            head = new Node(element, head);
+//            return;
+//        }
+//
+//        Node node = head;
+//        for(int i=0; i <= index; i++){
+//            if(i==index){
+//                node = new Node(element, node.next);
+//            }
+//            node = node.next;
+//        }
+//    }
+
+//    @Override
+//    public void add(int index, E element) {
+//        if(head == null){
+//            throw new NullPointerException();
+//        }
+//
+//        Node node = head;
+//        Node tempNode = null;
+//
+//        if(index == 0){
+//            tempNode = new Node(element, head);
+//        }else{
+//            if(index > size-1){
+//                tempNode = head;
+//                tempNode.next = new Node(element);
+//            }else{
+//                for(int i=0; i <= index; i++){
+//                    if(i == index-1){
+//                        tempNode = node;
+//                        tempNode.next = new Node(element, node.next);
+//                        break;
+//                    }
+//
+//                    node = head.next;
+//                }
+//            }
+//        }
+//
+//        head = tempNode;
 //        size++;
 //    }
+
+    @Override
+    public void add(int index, E element) {
+        // no need to check bounds; getNode does it.
+        if (index == 0) {
+            head = new Node(element, head);
+        } else {
+            Node node = getNode(index-1);
+            node.next = new Node(element, node.next);
+        }
+        size++;
+    }
 
     /** Returns the node at the given index.
      * @param index

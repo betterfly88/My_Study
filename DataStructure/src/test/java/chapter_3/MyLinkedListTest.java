@@ -40,37 +40,39 @@ public class MyLinkedListTest {
 
     @Test
     public void testAddIntT() {
-        mylist.add(0, 100);
-        assertThat(mylist.get(0), is(100));
-        assertThat(mylist.get(1), is(1));
-        mylist.add(2, 105);
-        assertThat(mylist.get(2), is(new Integer(105)));
-        assertThat(mylist.get(4), is(new Integer(3)));
-        assertThat(mylist.get(0), is(100));
+//        mylist.add(0, 100);
+//        assertThat(mylist.get(0), is(100));
+//        assertThat(mylist.get(1), is(1));
+//        mylist.add(2, 105);
+//        assertThat(mylist.get(2), is(new Integer(105)));
+//        assertThat(mylist.get(4), is(new Integer(3)));
+//        assertThat(mylist.get(0), is(100));
+//        mylist.add(1, 5);
+//
+//        System.out.println(mylist);
+
         mylist.add(1, 5);
+        //System.out.println(Arrays.toString(mal.toArray()));
+        assertThat(mylist.get(1), is(new Integer(5)));
+        assertThat(mylist.size(), is(4));
 
-        System.out.println(mylist);
-////        System.out.println(Arrays.toString(mal.toArray()));
-//        assertThat(mylist.get(1), is(new Integer(5)));
+        try {
+            mylist.set(-1, 0);
+            fail();
+        } catch (IndexOutOfBoundsException e) {} // good
 
-//        assertThat(mylist.size(), is(5));
-//
-//        try {
-//            mylist.set(-1, 0);
-//            fail();
-//        } catch (IndexOutOfBoundsException e) {} // good
-//
-//        try {
-//            mylist.set(4, 0);
-//            fail();
-//        } catch (IndexOutOfBoundsException e) {} // good
-//
-//        mylist.add(0, 6);
-//        //System.out.println(Arrays.toString(mal.toArray()));
-//        assertThat(mylist.get(0), is(6));
-//
-//        mylist.add(5, 7);
-//        //System.out.println(Arrays.toString(mal.toArray()));
-//        assertThat(mylist.get(5), is(new Integer(7)));
+        try {
+            mylist.set(4, 0);
+            fail();
+        } catch (IndexOutOfBoundsException e) {} // good
+
+        mylist.add(0, 6);
+        //System.out.println(Arrays.toString(mal.toArray()));
+        assertThat(mylist.get(0), is(6));
+
+        mylist.add(2, 100);
+        mylist.add(5, 7);
+        //System.out.println(Arrays.toString(mal.toArray()));
+        assertThat(mylist.get(5), is(new Integer(7)));
     }
 }
