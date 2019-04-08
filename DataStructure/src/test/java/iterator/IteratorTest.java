@@ -28,9 +28,4 @@ public class IteratorTest {
             System.out.println(book.getTitle());
         }
     }
-
-    @Test
-    public void 제네릭_테스트(){
-
-    }
 }
