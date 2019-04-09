@@ -2,6 +2,7 @@ package designpattern.iterator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * Created by betterfly
@@ -30,5 +31,10 @@ public class ListIterator<T> implements Iterator{
         this.currentIndex++;
 
         return item;
+    }
+
+    @Override
+    public Object currentItem() {
+        return this.list.get(this.currentIndex);
     }
 }
