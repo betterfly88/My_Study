@@ -1,5 +1,8 @@
 package designpattern;
 
+import designpattern.iterator.Company;
+import designpattern.iterator.Employee;
+import designpattern.iterator.Iterator;
 import designpattern.prototype.shape.Shape;
 import designpattern.prototype.shape.ShapeCache;
 
@@ -9,28 +12,19 @@ import designpattern.prototype.shape.ShapeCache;
  */
 public class main {
     public static void main(String[] args) {
-//        Monster diablo = new Diablo();
-//        System.out.println(diablo.getName());
-//        System.out.println(diablo.getType());
-//
-//        Monster anda = diablo;
-//        anda.setName("안다리엘");
-//        anda.setType("1차 왕");
-//        System.out.println(anda.getName());
-//        System.out.println(anda.getType());
+        Company company = new Company();
+        company.appendEmployee(new Employee("자바맨", 95));
+        company.appendEmployee(new Employee("betterFLY", 14));
+        company.appendEmployee(new Employee("슬립친구", 35));
 
-        shapeExecutor();
-    }
+        Iterator<Employee> iterator = company.iterator();
+        System.out.println(iterator.currentItem().getName());
+        System.out.println(iterator.currentItem().getAge());
 
-    public static void shapeExecutor(){
-        ShapeCache.loadCache();
+        while(iterator.hasNext()){
+            Employee employee = iterator.next();
+            System.out.println(employee.getName());
+        }
 
-        Shape circle = ShapeCache.getShape("1");
-        System.out.println(circle.getType());
-
-        Shape rectangle = ShapeCache.getShape("2");
-        System.out.println(rectangle.getType());
-        rectangle = ShapeCache.getShape("1");
-        System.out.println(rectangle.getType());
     }
 }
