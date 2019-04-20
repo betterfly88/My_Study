@@ -6,6 +6,7 @@ package spark;
  */
 public class SparkDemo {
     public static void main(String[] args) {
-
+        SparkContext context = new SparkContext();
+        context.executeSparkContext();
     }
 }
