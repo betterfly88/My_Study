@@ -23,5 +23,7 @@ public class SparkContext {
                 }
         );
 
+        lines.cache();
+        lines.rdd().checkpoint();
     }
 }
