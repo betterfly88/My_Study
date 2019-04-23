@@ -42,7 +42,7 @@ public class CustomRecursiveAction extends RecursiveAction {
 
     private void processing(String work){
         String result = work.toUpperCase();
-        logger.info("this result - ( "+ result + " ) - aws processed by"
+        System.out.println("this result - ( "+ result + " ) - aws processed by"
                 + Thread.currentThread().getName()
         );
 
