@@ -45,6 +45,5 @@ public class CustomRecursiveAction extends RecursiveAction {
         System.out.println("this result - ( "+ result + " ) - aws processed by"
                 + Thread.currentThread().getName()
         );
-
     }
 }
