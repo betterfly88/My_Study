@@ -4,8 +4,13 @@ import io.reactivex.Observable;
 
 public class Solution {
     public static void main(String[] args) {
-        helloRxWorld();
-        synchronouslyIncreaseIntegerValues();
+//        helloRxWorld();
+//        synchronouslyIncreaseIntegerValues();
+
+        for(int i=0; i<10; i++){
+            mergeObservable();
+            System.out.println("====종료====");
+        }
     }
 
     public static void helloRxWorld(){
@@ -36,5 +41,34 @@ public class Solution {
 
         o.map(i -> "Number : "+ i)
                 .subscribe(System.out::println);
+    }
+
+    public static void mergeObservable(){
+        Observable<String> a = Observable.create(s ->{
+            new Thread(()->{
+                s.onNext("One");
+                s.onNext("Two");
+                s.onNext("Three");
+
+                s.onComplete();
+            }).start();
+        });
+
+        a.subscribe(System.out::println);
+
+        Observable<String> b = Observable.create(s ->{
+            new Thread(()->{
+                s.onNext("일");
+                s.onNext("이");
+                s.onNext("삼");
+
+                s.onComplete();
+            }).start();
+        });
+
+        b.subscribe(System.out::println);
+
+//        Observable<String> c = Observable.merge(a, b);
+//        c.subscribe(System.out::println);
     }
 }
