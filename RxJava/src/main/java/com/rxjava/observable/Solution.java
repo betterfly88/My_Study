@@ -54,7 +54,7 @@ public class Solution {
             }).start();
         });
 
-        a.subscribe(System.out::println);
+//        a.subscribe(System.out::println);
 
         Observable<String> b = Observable.create(s ->{
             new Thread(()->{
@@ -66,9 +66,9 @@ public class Solution {
             }).start();
         });
 
-        b.subscribe(System.out::println);
+//        b.subscribe(System.out::println);
 
-//        Observable<String> c = Observable.merge(a, b);
-//        c.subscribe(System.out::println);
+        Observable<String> c = Observable.merge(a, b);
+        c.subscribe(System.out::println);
     }
 }
