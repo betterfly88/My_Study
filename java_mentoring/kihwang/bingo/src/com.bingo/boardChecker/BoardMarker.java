@@ -5,14 +5,14 @@ public class BoardMarker {
 		
 		if(markingPosition.length==2) {
 			bingoBoard[markingPosition[0]][markingPosition[1]] = 1;
-			System.out.print("세로 ");
+			System.out.print("???? ");
 			System.out.print(markingPosition[0]+1);
-			System.out.print(" 번째 가로 ");
+			System.out.print(" ??� ???? ");
 			System.out.print(markingPosition[1]+1);
-			System.out.println("번째 칸이 마킹됨");
+			System.out.println("??� ??? ?????");
 		}
 		else {
-			System.out.println("마킹할 대상이 없음");
+			System.out.println("????? ????? ????");
 		}
 		
 		return bingoBoard; 
