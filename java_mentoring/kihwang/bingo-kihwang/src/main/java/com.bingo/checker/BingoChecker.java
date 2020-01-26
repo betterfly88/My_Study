@@ -19,7 +19,7 @@ public class BingoChecker {
 	
 	public static ArrayList<MadedBingoInformation> checkDiagonal(int[][] bingoBoardForCheck) {
 		ArrayList<MadedBingoInformation> madedBingoInfomationList = new ArrayList<MadedBingoInformation>();
-	
+	// dd
 		int leftDiagonal = 0;
 		int rightDiagonal = 0;
 
