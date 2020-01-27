@@ -2,15 +2,22 @@ package com.rxjava.observable;
 
 import io.reactivex.Observable;
 
+import java.util.Arrays;
+import java.util.stream.Stream;
+
 public class Solution {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 //        helloRxWorld();
 //        synchronouslyIncreaseIntegerValues();
+//        for(int i=0; i<10; i++){
+//            mergeObservable();
+//            System.out.println("===================");
+//            Thread.sleep(500);
+//        }
 
-        for(int i=0; i<10; i++){
-            mergeObservable();
-            System.out.println("====종료====");
-        }
+
+//        generateInitials();
+        generateObInitials();
     }
 
     public static void helloRxWorld(){
@@ -70,5 +77,36 @@ public class Solution {
 
         Observable<String> c = Observable.merge(a, b);
         c.subscribe(System.out::println);
+    }
+
+
+    public static void generateInitials(){
+        getDataFromLocalMemorySynchronously()
+                .skip(10)
+                .limit(5)
+                .map(s -> s + "_transformed")
+                .forEach(System.out::println);
+    }
+
+    public static void generateObInitials(){
+        getObDataFromLocalMemorySynchronously()
+                .skip(10)
+                .take(5)
+                .map(s -> s + "_ob_trans")
+                .subscribe(System.out::println);
+    }
+
+    public static Stream<String> getDataFromLocalMemorySynchronously(){
+
+        return Stream.of("A", "B", "C", "D", "E", "F", "G", "H", "I", "J"
+                , "K", "L", "M", "N", "O"
+                , "P", "Q", "R", "S", "T");
+    }
+
+    public static Observable<String> getObDataFromLocalMemorySynchronously(){
+
+        return Observable.fromArray("A", "B", "C", "D", "E", "F", "G", "H", "I", "J"
+                , "K", "L", "M", "N", "O"
+                , "P", "Q", "R", "S", "T");
     }
 }
