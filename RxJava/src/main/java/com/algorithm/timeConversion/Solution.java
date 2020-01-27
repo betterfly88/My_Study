@@ -13,7 +13,7 @@ public class Solution {
         return hourToStringValue(calculateHour(s)) + s.substring(2, s.length()-2);
     }
 
-    private static String hourToStringValue(int h){
+    public static String hourToStringValue(int h){
         String hour = String.valueOf(h);
 
         return hour.length() < 2 ? "0"+hour : hour;
