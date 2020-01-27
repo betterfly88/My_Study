@@ -8,18 +8,38 @@ import com.bingo.player.MadedBingoInformation;
 public class BingoChecker {
 	
 	public static ArrayList<MadedBingoInformation> bingoChecker(int[][] bingoBoardForCheck) {
-		ArrayList<MadedBingoInformation> madedBingoList = new ArrayList<MadedBingoInformation>();
+		ArrayList<MadedBingoInformation> madedBingoList = new ArrayList<>();
 		madedBingoList.addAll(checkDiagonal(bingoBoardForCheck));
-		madedBingoList.addAll(checkHorizontal(bingoBoardForCheck));
-		madedBingoList.addAll(checkVertical(bingoBoardForCheck));
+		madedBingoList.addAll(check(BingoDirection.Horizontal, bingoBoardForCheck));
+		madedBingoList.addAll(check(BingoDirection.Vertical, bingoBoardForCheck));
 		
 		return madedBingoList;
 		
 	}
-	
+
+	public static ArrayList<MadedBingoInformation> check(BingoDirection direction, int[][] bingoBoardForCheck) {
+		ArrayList<MadedBingoInformation> madedBingoInfomationList = new ArrayList<MadedBingoInformation>();
+
+		for (int i = 0; i < bingoBoardForCheck[0].length; i++) {
+			int isChecked = 0;
+
+			for (int j = 0; j < bingoBoardForCheck[0].length; j++) {
+				if (bingoBoardForCheck[i][j] == 1) {
+					isChecked++;
+				}
+			}
+
+			if (isChecked == bingoBoardForCheck.length) {
+				madedBingoInfomationList.add(new MadedBingoInformation(direction, i+1));
+			}
+		}
+
+		return madedBingoInfomationList;
+	}
+
 	public static ArrayList<MadedBingoInformation> checkDiagonal(int[][] bingoBoardForCheck) {
 		ArrayList<MadedBingoInformation> madedBingoInfomationList = new ArrayList<MadedBingoInformation>();
-	// dd
+
 		int leftDiagonal = 0;
 		int rightDiagonal = 0;
 
@@ -43,7 +63,7 @@ public class BingoChecker {
 	}
 	
 	public static ArrayList<MadedBingoInformation> checkHorizontal(int[][] bingoBoardForCheck) {
-		
+
 		ArrayList<MadedBingoInformation> madedBingoInfomationList = new ArrayList<MadedBingoInformation>();
 
 		for (int i = 0; i < bingoBoardForCheck[0].length; i++) {
@@ -64,7 +84,7 @@ public class BingoChecker {
 	}
 
 	public static ArrayList<MadedBingoInformation> checkVertical(int[][] bingoBoardForCheck) {
-		
+
 		ArrayList<MadedBingoInformation> madedBingoInfomationList = new ArrayList<MadedBingoInformation>();
 
 		for (int i = 0; i < bingoBoardForCheck[0].length; i++) {
