@@ -17,4 +17,8 @@ dependencies {
     compile group: 'io.projectreactor', name: 'reactor-core', version: '3.3.0.RELEASE'
     compile group: 'org.projectlombok', name: 'lombok', version: '1.18.10'
 
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.1.8.RELEASE'
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.1.8.RELEASE'
+
+    compile('org.projectlombok:lombok')
 }
