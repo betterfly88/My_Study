@@ -1,10 +1,14 @@
 package com.spring;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.RuntimeBeanReference;
 import org.springframework.beans.factory.support.RootBeanDefinition;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.StaticApplicationContext;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.assertj.core.api.Assertions.not;
 import static org.hamcrest.core.Is.is;
@@ -79,5 +83,15 @@ public class HelloTest {
         StringPrinter printer = new StringPrinter();
         HelloDependency h = new HelloDependency(printer);
         h.printMessage("aa");
+    }
+
+    @Test
+    public void 빈로딩(){
+        StaticApplicationContext ac = new StaticApplicationContext();
+        TestBean a = ac.getBean("TestBean", TestBean.class);
+
+        a.asdf();
+
+
     }
 }
