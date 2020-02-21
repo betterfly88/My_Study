@@ -1,0 +1,13 @@
+spring:
+  profiles:
+    active: local
+
+
+---
+
+spring:
+  profiles: local
+
+product:
+  list:
+    fileName: product_list.csv
