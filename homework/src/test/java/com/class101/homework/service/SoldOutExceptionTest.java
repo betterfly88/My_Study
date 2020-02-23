@@ -9,14 +9,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ForkJoinPool;
-import java.util.concurrent.Future;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {OrderProcessService.class, FetchProductService.class})
@@ -27,7 +23,6 @@ public class SoldOutExceptionTest {
 
     private Map<Long, OrderItem> orderItemList = new HashMap<>();
     ExecutorService executor1;
-    ExecutorService executor2;
 
     @Before
     public void init() throws IOException {
@@ -56,7 +51,6 @@ public class SoldOutExceptionTest {
                     }
                 }
 
-
                 orderService.order();
             }
         });
@@ -75,14 +69,6 @@ public class SoldOutExceptionTest {
     }
 
     @Test
-    public void forkJoinPool(){
-        int poolSize = Runtime.getRuntime().availableProcessors();
-        ForkJoinPool pool = new ForkJoinPool(poolSize);
-
-        pool.submit(() ->aa());
-    }
-
-    @Test
     public void asdfasfas(){
         int threads = 10;
         ExecutorService service =
@@ -93,9 +79,39 @@ public class SoldOutExceptionTest {
         }
     }
 
-    private void aa(){
-        orderService.addItem(39712L, 3);
-        orderService.order();
+    @Test
+    public void 람다() throws InterruptedException {
+        Thread thread = new Thread(() -> {
+            for(int i=0; i<10; i++){
+                orderService.addItem(39712L, 3);
+
+                System.out.println(Thread.currentThread().getName() + " 의 남은 개수 : " + orderService.getProductList().get(39712L).getStocks());
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            orderService.order();
+        });
+
+        Thread thread2 = new Thread(() -> {
+            orderService.addItem(39712L, 3);
+            orderService.order();
+
+            System.out.println(Thread.currentThread().getName() + " 의 남은 개수 : " + orderService.getProductList().get(39712L).getStocks());
+        });
+
+
+
+
+        thread.setName("Thread #1");
+        thread2.setName("Thread #2");
+        thread.start();
+        thread2.start();
+
+        Thread.sleep(10000);
     }
 
     @After
