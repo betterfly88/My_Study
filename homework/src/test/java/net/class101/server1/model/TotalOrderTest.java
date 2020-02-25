@@ -16,7 +16,7 @@ public class TotalOrderTest {
     private OrderProcessService orderService;
     private FetchProductService fetchProductService;
 
-    private Map<Long, OrderItem> orderItemList = new HashMap<>();
+    private Map<String, OrderItem> orderItemList = new HashMap<>();
 
     @Before
     public void init() throws IOException {
@@ -33,9 +33,11 @@ public class TotalOrderTest {
         OrderItem o2 = OrderItem.builder().productId(15L).price(10000L).title("샘플2").counts(1).productType(ProductType.CLASS).build();
         OrderItem o3 = OrderItem.builder().productId(30L).price(2000L).title("샘플3").counts(5).productType(ProductType.KIT).build();
 
-        orderItemList.put(10L, o1);
-        orderItemList.put(15L, o2);
-        orderItemList.put(30L, o3);
+
+
+        orderItemList.put("A User", o1);
+        orderItemList.put("B User", o2);
+        orderItemList.put("C User", o3);
 
         orderService.setOrderItemList(orderItemList);
 
@@ -56,9 +58,9 @@ public class TotalOrderTest {
         OrderItem o2 = OrderItem.builder().productId(15L).price(50000L).title("샘플2").counts(1).productType(ProductType.CLASS).build();
         OrderItem o3 = OrderItem.builder().productId(30L).price(2000L).title("샘플3").counts(5).productType(ProductType.KIT).build();
 
-        orderItemList.put(10L, o1);
-        orderItemList.put(15L, o2);
-        orderItemList.put(30L, o3);
+        orderItemList.put("A User", o1);
+        orderItemList.put("B User", o2);
+        orderItemList.put("C User", o3);
 
         orderService.setOrderItemList(orderItemList);
 

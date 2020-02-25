@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 public enum ProductType implements ProductState {
     CLASS(0, "클래스"){
         @Override
-        public void isValidateItem(Map<Long, Product> productList, Map<Long, OrderItem> orderList, OrderItem item) {
+        public void isValidateItem(Map<Long, Product> productList, Map<String, OrderItem> orderList, OrderItem item) {
             if (productList.get(item.getProductId()).getStocks() < item.getCounts()){
 
                 throw new SoldOutException("["+productList.get(item.getProductId()).getTitle() + "] 해당 상품의 재고가 부족합니다.\n " +
@@ -29,9 +29,10 @@ public enum ProductType implements ProductState {
             }
         }
     },
+
     KIT(1, "키트"){
         @Override
-        public void isValidateItem(Map<Long, Product> productList, Map<Long, OrderItem> orderList, OrderItem item) {
+        public void isValidateItem(Map<Long, Product> productList, Map<String, OrderItem> orderList, OrderItem item) {
             if (productList.get(item.getProductId()).getStocks() < item.getCounts()){
 
                 throw new SoldOutException("["+productList.get(item.getProductId()).getTitle() + "] 해당 상품의 재고가 부족합니다.\n " +

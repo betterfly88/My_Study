@@ -1,6 +1,7 @@
 package net.class101.server1.service;
 
 import net.class101.server1.exception.SoldOutException;
+import net.class101.server1.model.User;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -34,25 +35,28 @@ public class SoldOutExceptionTest {
     @Test(expected = SoldOutException.class)
     public void multiThreadTest(){
         Thread t1 = new Thread(() ->{
-            orderItem(39712L, 2);
+            for (int i = 0; i < 3; i++) {
+                System.out.println("i 번째 수행합니다 == "+ i);
+                orderItem("Thread 1",39712L, 2);
+            }
         });
 
         Thread t2 =new Thread(() ->{
-            orderItem(39712L, 3);
+            orderItem("Thread 2",39712L, 5);
         });
 
-        Thread t3 =new Thread(() ->{
-            orderItem(39712L, 2);
-        });
+//        Thread t3 =new Thread(() ->{
+//            orderItem(39712L, 2);
+//        });
+//
+//        Thread t4 = new Thread(() ->{
+//            orderItem(39712L, 4);
+//        });
 
-        Thread t4 = new Thread(() ->{
-            orderItem(39712L, 4);
-        });
-
-        t1.run();
-        t2.run();
-        t3.run();
-        t4.run();
+        executor.execute(t1);
+        executor.execute(t2);
+//        executor.execute(t3);
+//        executor.execute(t4);
     }
 
 
@@ -61,32 +65,35 @@ public class SoldOutExceptionTest {
         executor.submit(new Runnable() {
             @Override
             public void run() {
-                orderItem(39712L, 2);
+                orderItem("Thread 1",39712L, 2);
             }
         });
         executor.submit(new Runnable() {
             @Override
             public void run() {
-                orderItem(39712L, 3);
+                orderItem("Thread 2",39712L, 3);
             }
         });
         executor.submit(new Runnable() {
             @Override
             public void run() {
-                orderItem(39712L, 7);
+                orderItem("Thread 3",39712L, 7);
             }
         });
 
         executor.submit(new Runnable() {
             @Override
             public void run() {
-                orderItem(39712L, 5);
+                orderItem("Thread 4", 39712L, 5);
             }
         });
     }
 
-    private void orderItem(long pid, int counts){
-        orderService.addItem(pid, counts);
+    private void orderItem(String userName, long pid, int counts){
+        User user = new User(userName);
+        user.setProductId(pid);
+        user.setOrderCounts(counts);
+        orderService.addItem(user);
         System.out.println("[Thread Name] -> "+Thread.currentThread().getName() + " 의 남은 개수 : " + orderService.getProductList().get(pid).getStocks());
     }
 

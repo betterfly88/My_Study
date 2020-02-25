@@ -6,6 +6,7 @@ import net.class101.server1.model.Product;
 import net.class101.server1.model.TotalOrder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import net.class101.server1.model.User;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class OrderProcessService{
     private final FetchProductService fetchProductService;
     private Map<Long, Product> productList = new ConcurrentHashMap<Long, Product>();
-    private Map<Long, OrderItem> orderItemList = new HashMap<>();
+    private Map<String, OrderItem> orderItemList = new HashMap<>();
 
     @PostConstruct
     public void init() throws IOException {
@@ -28,7 +29,7 @@ public class OrderProcessService{
         productList = fetchProductService.getProductList();
     }
 
-    public void setOrderItemList(Map<Long, OrderItem> orderItemList){
+    public void setOrderItemList(Map<String, OrderItem> orderItemList){
         this.orderItemList = orderItemList;
     }
 
@@ -37,15 +38,15 @@ public class OrderProcessService{
     }
 
     @Async("orderTaskExecutor")
-    public synchronized void addItem(long pId, int pCount){
-        OrderItem item = findItemDetail(pId, pCount);
+    public synchronized void addItem(User user){
+        OrderItem item = findItemDetail(user.getProductId(), user.getOrderCounts());
         item.getProductType().isValidateItem(productList, orderItemList, item);
 
-        if(orderItemList.containsKey(pId)){
-            item.setCounts(orderItemList.get(pId).getCounts() + pCount);
+        if(orderItemList.containsKey(user.getProductId())){
+            item.setCounts(orderItemList.get(user.getProductId()).getCounts() + user.getOrderCounts());
         }
 
-        orderItemList.put(pId, item);
+        orderItemList.put(user.getUserName(), item);
         deductProductList();
     }
 
@@ -83,9 +84,9 @@ public class OrderProcessService{
     }
 
     private void deductProductList(){
-        orderItemList.entrySet().forEach(e ->{
-            int leftStocks = productList.get(e.getKey()).getStocks() - e.getValue().getCounts();
-            productList.get(e.getKey()).setStocks(leftStocks);
+        orderItemList.values().forEach(values ->{
+            int leftStocks = productList.get(values.getProductId()).getStocks() - values.getCounts();
+            productList.get(values.getProductId()).setStocks(leftStocks);
         });
     }
 

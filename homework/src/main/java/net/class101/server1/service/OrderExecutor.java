@@ -2,6 +2,7 @@ package net.class101.server1.service;
 
 import net.class101.server1.model.ClientState;
 import lombok.RequiredArgsConstructor;
+import net.class101.server1.model.User;
 import org.springframework.stereotype.Service;
 
 import java.util.Scanner;
@@ -15,6 +16,10 @@ public class OrderExecutor {
         System.out.println("입력(o[order]): 주문 , q[quit]: 종료) :");
         Scanner sc = new Scanner(System.in);
 
+        System.out.println("이름을 입력해주세요.");
+        String userName = sc.nextLine();
+
+        User user = new User(userName);
         while(true){
             String input = sc.nextLine();
 
@@ -35,7 +40,9 @@ public class OrderExecutor {
                     System.out.print("수량 : ");
                     int pCount = sc.nextInt();
 
-                    orderService.addItem(pId, pCount);
+                    user.setProductId(pId);
+                    user.setOrderCounts(pCount);
+                    orderService.addItem(user);
                     break;
                 case EXECUTE:
                     orderService.order();

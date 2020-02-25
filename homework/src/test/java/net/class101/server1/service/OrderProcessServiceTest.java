@@ -5,6 +5,7 @@ import net.class101.server1.exception.SoldOutException;
 import net.class101.server1.model.OrderItem;
 import net.class101.server1.model.ProductType;
 import net.class101.server1.model.TotalOrder;
+import net.class101.server1.model.User;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,7 +20,7 @@ public class OrderProcessServiceTest {
     private OrderProcessService orderService;
     private FetchProductService fetchProductService;
 
-    private Map<Long, OrderItem> orderItemList = new HashMap<>();
+    private Map<String, OrderItem> orderItemList = new HashMap<>();
 
     @Before
     public void init() throws IOException {
@@ -31,8 +32,13 @@ public class OrderProcessServiceTest {
 
     @Test(expected = OrderException.class)
     public void 아이템_추가(){
-        orderService.addItem(45947, 1);
-        orderService.addItem(45947, 1);
+        // given
+        User user = new User("User 1");
+        user.setProductId(45947L);
+        user.setOrderCounts(1);
+        // when & then
+        orderService.addItem(user);
+        orderService.addItem(user);
     }
 
     @Test
@@ -42,9 +48,9 @@ public class OrderProcessServiceTest {
         OrderItem o2 = OrderItem.builder().productId(15L).price(10000L).title("샘플2").counts(1).productType(ProductType.CLASS).build();
         OrderItem o3 = OrderItem.builder().productId(30L).price(2000L).title("샘플3").counts(5).productType(ProductType.KIT).build();
 
-        orderItemList.put(10L, o1);
-        orderItemList.put(15L, o2);
-        orderItemList.put(30L, o3);
+        orderItemList.put("10L", o1);
+        orderItemList.put("15L", o2);
+        orderItemList.put("30L", o3);
 
         orderService.setOrderItemList(orderItemList);
 
@@ -58,7 +64,10 @@ public class OrderProcessServiceTest {
     @Test
     public void 남은재고_확인(){
         //given
-        orderService.addItem(39712, 7);
+        User user = new User("User 1");
+        user.setProductId(39712L);
+        user.setOrderCounts(7);
+        orderService.addItem(user);
         orderService.order();
 
         //when
@@ -71,13 +80,17 @@ public class OrderProcessServiceTest {
     @Test(expected = SoldOutException.class)
     public void SoldOutException(){
         //given
-        orderService.addItem(39712, 7);
+        User user = new User("User 1");
+        user.setProductId(39712L);
+        user.setOrderCounts(7);
+        orderService.addItem(user);
         orderService.order();
 
         //when
         orderService.getProductList().get(39712L).getStocks();
 
         //then
-        orderService.addItem(39712, 2);
+        user.setOrderCounts(3);
+        orderService.addItem(user);
     }
 }
