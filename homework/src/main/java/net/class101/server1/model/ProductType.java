@@ -6,6 +6,7 @@ import net.class101.server1.exception.SoldOutException;
 import net.class101.server1.service.ProductState;
 import lombok.Getter;
 
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
@@ -13,7 +14,7 @@ import java.util.stream.Stream;
 public enum ProductType implements ProductState {
     CLASS(0, "클래스"){
         @Override
-        public void isValidateItem(Map<Long, Product> productList, Map<String, OrderItem> orderList, OrderItem item) {
+        public void isValidateItem(Map<Long, Product> productList, List<OrderItem> orderList, OrderItem item) {
             if (productList.get(item.getProductId()).getStocks() < item.getCounts()){
 
                 throw new SoldOutException("["+productList.get(item.getProductId()).getTitle() + "] 해당 상품의 재고가 부족합니다.\n " +
@@ -24,7 +25,7 @@ public enum ProductType implements ProductState {
                 throw new OrderException(ErrorStatus.EXCEED_ORDER_CLASS);
             }
 
-            if (orderList.containsKey(item.getProductId())){
+            if (orderList != null && orderList.stream().anyMatch(v -> v.getProductId() == item.getProductId())){
                 throw new OrderException(ErrorStatus.ALREADY_EXISTS_CLASS);
             }
         }
@@ -32,20 +33,21 @@ public enum ProductType implements ProductState {
 
     KIT(1, "키트"){
         @Override
-        public void isValidateItem(Map<Long, Product> productList, Map<String, OrderItem> orderList, OrderItem item) {
+        public void isValidateItem(Map<Long, Product> productList, List<OrderItem> orderList, OrderItem item) {
             if (productList.get(item.getProductId()).getStocks() < item.getCounts()){
 
                 throw new SoldOutException("["+productList.get(item.getProductId()).getTitle() + "] 해당 상품의 재고가 부족합니다.\n " +
-                        "남은 재고 : "+ productList.get(item.getProductId()).getStocks()+"개");
+                        "남은 재고 : "+ productList.get(item.getProductId()).getStocks()+"개" + ", [주문 수량 :"+item.getCounts()+ "]");
             }
 
-            if (item.getProductType() == ProductType.KIT && orderList.containsKey(item.getProductId())) {
-                int orderCount = orderList.get(item.getProductId()).getCounts() + item.getCounts();
-                if(orderCount > productList.get(item.getProductId()).getStocks()){
-                    throw new SoldOutException("["+productList.get(item.getProductId()).getTitle() + "] 해당 상품의 재고가 부족합니다.\n " +
-                            "남은 재고 : "+ productList.get(item.getProductId()).getStocks()+"개");
-                }
+            if(orderList != null &&
+                    orderList.stream().filter(v -> item.getProductType() == ProductType.KIT && v.getProductId() == item.getProductId())
+                    .anyMatch(v->{
+                        return item.getCounts() > productList.get(item.getProductId()).getStocks();
+                    })){
 
+                throw new SoldOutException("["+productList.get(item.getProductId()).getTitle() + "] 해당 상품의 재고가 부족합니다.\n " +
+                        "남은 재고 : "+ productList.get(item.getProductId()).getStocks()+"개" + ", [주문 수량 :"+item.getCounts()+ "]");
             }
         }
     }

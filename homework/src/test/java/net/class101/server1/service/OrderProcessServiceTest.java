@@ -10,7 +10,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.hamcrest.core.Is.is;
@@ -20,7 +22,7 @@ public class OrderProcessServiceTest {
     private OrderProcessService orderService;
     private FetchProductService fetchProductService;
 
-    private Map<String, OrderItem> orderItemList = new HashMap<>();
+    private Map<String, List<OrderItem>> orderItemList = new HashMap<>();
 
     @Before
     public void init() throws IOException {
@@ -48,17 +50,21 @@ public class OrderProcessServiceTest {
         OrderItem o2 = OrderItem.builder().productId(15L).price(10000L).title("샘플2").counts(1).productType(ProductType.CLASS).build();
         OrderItem o3 = OrderItem.builder().productId(30L).price(2000L).title("샘플3").counts(5).productType(ProductType.KIT).build();
 
-        orderItemList.put("10L", o1);
-        orderItemList.put("15L", o2);
-        orderItemList.put("30L", o3);
+        User user = new User("A User");
+        List<OrderItem> orderList = new ArrayList<>();
+        orderList.add(o1);
+        orderList.add(o2);
+        orderList.add(o3);
 
-        orderService.setOrderItemList(orderItemList);
+        orderItemList.put(user.getUserName(), orderList);
+        orderService.setUserOrderList(orderItemList);
+
 
         // when
-        TotalOrder order = TotalOrder.of(orderItemList);
+        TotalOrder order = TotalOrder.of(orderItemList, user);
 
         // then
-        orderService.printResult(order);
+        orderService.printResult(user, order);
     }
 
     @Test
@@ -68,7 +74,7 @@ public class OrderProcessServiceTest {
         user.setProductId(39712L);
         user.setOrderCounts(7);
         orderService.addItem(user);
-        orderService.order();
+        orderService.order(user);
 
         //when
         int stock = orderService.getProductList().get(39712L).getStocks();
@@ -84,7 +90,7 @@ public class OrderProcessServiceTest {
         user.setProductId(39712L);
         user.setOrderCounts(7);
         orderService.addItem(user);
-        orderService.order();
+        orderService.order(user);
 
         //when
         orderService.getProductList().get(39712L).getStocks();

@@ -14,6 +14,7 @@ import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -21,7 +22,8 @@ import java.util.concurrent.ConcurrentHashMap;
 public class OrderProcessService{
     private final FetchProductService fetchProductService;
     private Map<Long, Product> productList = new ConcurrentHashMap<Long, Product>();
-    private Map<String, OrderItem> orderItemList = new HashMap<>();
+    private Map<String, List<OrderItem>> userOrderList = new HashMap<>();
+    private List<OrderItem> itemList = new ArrayList<>();
 
     @PostConstruct
     public void init() throws IOException {
@@ -29,8 +31,8 @@ public class OrderProcessService{
         productList = fetchProductService.getProductList();
     }
 
-    public void setOrderItemList(Map<String, OrderItem> orderItemList){
-        this.orderItemList = orderItemList;
+    public void setUserOrderList(Map<String, List<OrderItem>> userOrderList){
+        this.userOrderList = userOrderList;
     }
 
     public Map<Long, Product> getProductList(){
@@ -40,20 +42,29 @@ public class OrderProcessService{
     @Async("orderTaskExecutor")
     public synchronized void addItem(User user){
         OrderItem item = findItemDetail(user.getProductId(), user.getOrderCounts());
-        item.getProductType().isValidateItem(productList, orderItemList, item);
+        item.getProductType().isValidateItem(productList, userOrderList.get(user.getUserName()), item);
 
-        if(orderItemList.containsKey(user.getProductId())){
-            item.setCounts(orderItemList.get(user.getProductId()).getCounts() + user.getOrderCounts());
+        /*
+            하려는 일은, 해당 유저(key)에게 이미 그 상품이 있으면
+            그 유저의 총 주문 개수를 올려줘야함.
+         */
+        if(userOrderList.get(user.getUserName()) != null){
+            for (OrderItem i: userOrderList.get(user.getUserName())) {
+                if(i.getProductId() == user.getProductId()){
+                    item.setCounts(i.getCounts() + user.getOrderCounts());
+                }
+            }
         }
 
-        orderItemList.put(user.getUserName(), item);
-        deductProductList();
+        itemList.add(item);
+        userOrderList.put(user.getUserName(), itemList);
+        deductProductList(item);
     }
 
-    public void order(){
-        TotalOrder totalOrder = TotalOrder.of(orderItemList);
+    public void order(User user){
+        TotalOrder totalOrder = TotalOrder.of(userOrderList, user);
 
-        printResult(totalOrder);
+        printResult(user, totalOrder);
     }
 
     private OrderItem findItemDetail(long pId, int pCount){
@@ -68,10 +79,10 @@ public class OrderProcessService{
                 .build();
     }
 
-    public void printResult(TotalOrder totalOrder){
+    public void printResult(User user, TotalOrder totalOrder){
         System.out.println("주문 내역 : \n");
         System.out.println("=================================================");
-        totalOrder.getOrderList().values().forEach(v ->{
+        totalOrder.getOrderList().get(user.getUserName()).forEach(v ->{
             System.out.println(v.getTitle() + " - " + v.getCounts() +"개");
         });
 
@@ -83,11 +94,9 @@ public class OrderProcessService{
         System.out.println("=================================================");
     }
 
-    private void deductProductList(){
-        orderItemList.values().forEach(values ->{
-            int leftStocks = productList.get(values.getProductId()).getStocks() - values.getCounts();
-            productList.get(values.getProductId()).setStocks(leftStocks);
-        });
+    private void deductProductList(OrderItem item){
+        int left = productList.get(item.getProductId()).getStocks() - item.getCounts();
+        productList.get(item.getProductId()).setStocks(left);
     }
 
     public void exitOrder(){

@@ -45,7 +45,7 @@ public class OrderExecutor {
                     orderService.addItem(user);
                     break;
                 case EXECUTE:
-                    orderService.order();
+                    orderService.order(user);
                     break;
                 case QUIT:
                     orderService.exitOrder();

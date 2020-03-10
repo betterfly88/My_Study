@@ -29,11 +29,21 @@ public class SoldOutExceptionTest {
         orderService = new OrderProcessService(fetchProductService);
         orderService.init();
 
-        executor = Executors.newFixedThreadPool(10);
+        executor = Executors.newScheduledThreadPool(10);
     }
 
-    @Test(expected = SoldOutException.class)
+    @Test
     public void multiThreadTest(){
+
+
+        Thread t2 =new Thread(() ->{
+            orderItem("Thread 2",39712L, 5);
+        });
+
+        Thread t3 =new Thread(() ->{
+            orderItem("Thread 3",39712L, 3);
+        });
+
         Thread t1 = new Thread(() ->{
             for (int i = 0; i < 3; i++) {
                 System.out.println("i 번째 수행합니다 == "+ i);
@@ -41,20 +51,25 @@ public class SoldOutExceptionTest {
             }
         });
 
-        Thread t2 =new Thread(() ->{
-            orderItem("Thread 2",39712L, 5);
+        Thread t4 = new Thread(() ->{
+            orderItem("Thread 4",39712L, 4);
         });
 
-//        Thread t3 =new Thread(() ->{
-//            orderItem(39712L, 2);
-//        });
-//
-//        Thread t4 = new Thread(() ->{
-//            orderItem(39712L, 4);
-//        });
+        Thread t5 = new Thread(() ->{
+            orderItem("Thread 5",39712L, 2);
+        });
 
-        executor.execute(t1);
-        executor.execute(t2);
+        // 같은 call stack 에서 사용됨
+        t3.start(); // 3
+        t4.start(); // 4
+        t2.start(); // 5
+        t1.start();
+        t5.start();
+
+        // 각 thread call-stack에서 수행되기 때문에 디버깅 & 정확한 추적이 어려움
+//        executor.execute(t2);
+//        executor.execute(t5);
+//        executor.execute(t1);
 //        executor.execute(t3);
 //        executor.execute(t4);
     }
@@ -62,26 +77,26 @@ public class SoldOutExceptionTest {
 
     @Test
     public void executorService_Test(){
-        executor.submit(new Runnable() {
+        executor.execute(new Runnable() {
             @Override
             public void run() {
                 orderItem("Thread 1",39712L, 2);
             }
         });
-        executor.submit(new Runnable() {
+        executor.execute(new Runnable() {
             @Override
             public void run() {
                 orderItem("Thread 2",39712L, 3);
             }
         });
-        executor.submit(new Runnable() {
+        executor.execute(new Runnable() {
             @Override
             public void run() {
                 orderItem("Thread 3",39712L, 7);
             }
         });
 
-        executor.submit(new Runnable() {
+        executor.execute(new Runnable() {
             @Override
             public void run() {
                 orderItem("Thread 4", 39712L, 5);
@@ -94,7 +109,7 @@ public class SoldOutExceptionTest {
         user.setProductId(pid);
         user.setOrderCounts(counts);
         orderService.addItem(user);
-        System.out.println("[Thread Name] -> "+Thread.currentThread().getName() + " 의 남은 개수 : " + orderService.getProductList().get(pid).getStocks());
+        System.out.println("[Thread Name] -> "+userName + " 의 남은 개수 : " + orderService.getProductList().get(pid).getStocks());
     }
 
     @After
