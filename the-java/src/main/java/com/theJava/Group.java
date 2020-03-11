@@ -1,11 +1,11 @@
-package com.betterfly;
+package com.theJava;
 
 public class Group {
     int maxNumberOfAttendees;
     int numberOfEnrollment;
 
     public boolean isEnrollmentFull(){
-        if(maxNumberOfAttendees == 0){
+        if (maxNumberOfAttendees == 0) {
             return false;
         }
 
@@ -15,4 +15,5 @@ public class Group {
 
         return true;
     }
+
 }
