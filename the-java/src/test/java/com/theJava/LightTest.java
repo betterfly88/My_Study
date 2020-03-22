@@ -1,5 +1,6 @@
 package com.theJava;
 
+import com.theJava.magic.Light;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -11,7 +12,6 @@ public class LightTest {
         light.turnOn();
         light.lightState();
 
-        assertTrue(light.isTurnOn);
     }
 
 }
