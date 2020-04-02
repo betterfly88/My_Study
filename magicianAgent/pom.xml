@@ -29,6 +29,12 @@
       <artifactId>byte-buddy</artifactId>
       <version>1.10.8</version>
     </dependency>
+
+    <dependency>
+      <groupId>the-java</groupId>
+      <artifactId>com.betterfly</artifactId>
+      <version>1.0</version>
+    </dependency>
   </dependencies>
 
   <build>
