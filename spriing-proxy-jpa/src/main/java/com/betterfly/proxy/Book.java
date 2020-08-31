@@ -1,12 +1,16 @@
 package com.betterfly.proxy;
 
 import jdk.nashorn.internal.objects.annotations.Getter;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class Book {
     @Id @GeneratedValue
     private Long id;

@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringJPAApplication {
+public class SpringProxyApplication {
     public static void main(String[] args) {
-        SpringApplication.run(SpringJPAApplication.class);
+        SpringApplication.run(SpringProxyApplication.class, args);
     }
 }

@@ -1,8 +1,8 @@
 package com.betterfly.proxy;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import java.util.List;
 
 public interface BookService {
-    void rent(Book book);
+    List<Book> findByBooks();
+    void rent(Book b);
 }
