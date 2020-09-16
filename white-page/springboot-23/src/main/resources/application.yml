@@ -1,0 +1,5 @@
+# spring 23
+
+spring:
+  main:
+    cloud-platform: cloud_foundry

@@ -1,0 +1,58 @@
+buildscript {
+    ext {
+
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'eclipse'
+
+    group = 'com.betterfly'
+    version = '0.0.1'
+    sourceCompatibility = 1.11
+
+    repositories {
+        mavenCentral()
+        jcenter()
+
+    }
+
+    dependencies {
+        compile 'org.projectlombok:lombok:1.18.12'
+        annotationProcessor("org.projectlombok:lombok:1.18.12")
+    }
+}
+
+project(':springboot-20') {
+    dependencies {
+        compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.0.0.RELEASE'
+    }
+}
+
+project(':springboot-21') {
+    dependencies {
+        compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.1.0.RELEASE'
+    }
+}
+
+project(':springboot-22') {
+    dependencies {
+        compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.2.0.RELEASE'
+//        compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.2.0.RELEASE'
+
+
+    }
+}
+
+project(':springboot-23') {
+    dependencies {
+        compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.3.0.RELEASE'
+//        compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.3.0.RELEASE'
+    }
+}

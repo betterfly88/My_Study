@@ -1,0 +1,30 @@
+# spring 22
+
+white-page:
+  enabled: false
+  remote-address: 192.168.1.1
+  security:
+    username: admin
+    password: 1234
+    roles:
+      - USER
+      - ADMIN
+
+white-page-con:
+  enabled: true
+  remote-address: 192.168.33.51
+  security:
+    username: adminCon
+    password: 1234Con
+    roles:
+      - MASTER
+
+spring:
+  banner:
+    image:
+      bitdepth: 8
+
+
+
+
+
