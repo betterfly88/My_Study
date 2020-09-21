@@ -5,7 +5,6 @@ import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.Filer;
@@ -18,13 +17,11 @@ import javax.lang.model.element.Modifier;
 import javax.lang.model.element.TypeElement;
 import javax.tools.Diagnostic;
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.util.Set;
 
 /*
     Service Provider Interface
  */
-@EnableAutoConfiguration(exclude = JavaFile.class)
 @AutoService(Processor.class)
 public class MagicAnnotationProcessor extends AbstractProcessor {
     @Override
@@ -51,24 +48,29 @@ public class MagicAnnotationProcessor extends AbstractProcessor {
 
 
             // source code를 객체화하는 작업
-            MethodSpec pullOut = MethodSpec.methodBuilder("pullOut")
-                    .addModifiers(Modifier.PUBLIC)
-                    .returns(String.class)
-                    .addStatement("return $S", "Rabbit")
-                    .build();
-
-            TypeSpec mojaFactory = TypeSpec.classBuilder("MojaFactory")
-                    .addModifiers(Modifier.PUBLIC)
-                    .addMethod(pullOut)
-                    .build();
-
-            // Filer interface : 소스콛, 클래스 코드 및 리소스를 생성할 수 있는 인터페이스
-            Filer filer = processingEnv.getFiler();
-
             TypeElement typeElement = (TypeElement)e;
             ClassName className = ClassName.get(typeElement);
 
+            // 메서드 생성
+            MethodSpec pullOut = MethodSpec.methodBuilder("pullOut") // 메서드명
+                    .addModifiers(Modifier.PUBLIC)                   // 접근제어자 설정
+                    .returns(String.class)                           // 리턴 타입
+                    .addStatement("return $S", "Rabbit")             // 상태 정의
+                    .build();
+
+            // 클래스 생성
+            TypeSpec mojaFactory = TypeSpec.classBuilder("MojaFactory") // 클래스명(풀패키지명이 아닌 SimpleClass명)
+                    .addModifiers(Modifier.PUBLIC)                      // 접근 제어자
+                    .addSuperinterface(className)                       // 구현하고자하는 인터페이스
+                    .addMethod(pullOut)                                 // 클래스에 포함할 메서드 추가
+                    .build();
+
+            // Filer interface : 소스 코드, 클래스 코드 및 리소스를 생성할 수 있는 인터페이스
+            // 위에 생성한 메서드와 클래스를 담는 실질적인 파일화 작업
+            Filer filer = processingEnv.getFiler();
+
             try {
+                // javapoet을 이용한 java file 만들기
                 JavaFile.builder(className.packageName(), mojaFactory).build().writeTo(filer);
             } catch (IOException ioException) {
                 processingEnv.getMessager().printMessage(Diagnostic.Kind.ERROR, "FATAL ERROR" + e);

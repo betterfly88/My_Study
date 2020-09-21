@@ -4,8 +4,6 @@ import com.betterfly.domain.WhitePageConstructorProperties;
 import com.betterfly.domain.WhitePageProperties;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.webservices.client.WebServiceTemplateBuilder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -26,9 +24,5 @@ public class WhitePageService {
 
         log.info("Connecting address : {}", this.conProperties.getRemoteAddress());
         log.info("Security userName : {}, password : {}, roles : {}", this.conProperties.getSecurity().getUsername(), this.conProperties.getSecurity().getPassword(), this.conProperties.getSecurity().getRoles().toString());
-    }
-
-    public void adf(){
-
     }
 }
