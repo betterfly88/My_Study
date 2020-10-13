@@ -21,7 +21,7 @@ public class OrikaConverterImpl implements Converter {
     }
 
     @Override
-    public OrderEntity convert(OrderDto orderDto) {
+    public OrderEntity convertDtoToEntity(OrderDto orderDto) {
         return mapperFacade.map(orderDto, OrderEntity.class);
 
     }

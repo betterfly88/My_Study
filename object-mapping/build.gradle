@@ -21,14 +21,21 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
     compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
     testImplementation('org.springframework.boot:spring-boot-starter-test')
 
     compile group: 'ma.glasnost.orika', name: 'orika-core', version: '1.5.4'
     compile group: 'org.mapstruct', name: 'mapstruct', version: '1.4.1.Final'
+    compile group: 'org.mapstruct', name: 'mapstruct-jdk8', version: '1.4.1.Final'
+    compile group: 'org.mapstruct', name: 'mapstruct-processor', version: '1.4.1.Final'
+
     compile group: 'org.modelmapper', name: 'modelmapper', version: '2.3.8'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.11.3'
+
+    annotationProcessor 'org.projectlombok:lombok'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.1.Final'
 }
+
+
 
 test {
     useJUnitPlatform()

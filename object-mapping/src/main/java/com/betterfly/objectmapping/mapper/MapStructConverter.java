@@ -11,9 +11,10 @@ import org.mapstruct.factory.Mappers;
     https://www.baeldung.com/mapstruct
  */
 @Mapper
-public interface MapStructConverter {
+public interface MapStructConverter extends Converter {
     MapStructConverter INSTANCE = Mappers.getMapper(MapStructConverter.class);
 
-    @Mapping(source = "status", target = "orderStatus")
-    OrderEntity convert(OrderDto orderDto);
+    @Mapping(source = "status", target="orderStatus")
+    @Override
+    OrderEntity convertDtoToEntity(OrderDto orderDto);
 }
