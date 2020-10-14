@@ -1,14 +1,13 @@
 package com.betterfly.objectmapping.model;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Builder
+@Setter
 @Getter
+@NoArgsConstructor
 public class OrderDto {
     private long serialNo;
     private long orderId;

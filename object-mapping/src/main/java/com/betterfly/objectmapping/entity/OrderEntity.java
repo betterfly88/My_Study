@@ -1,10 +1,7 @@
 package com.betterfly.objectmapping.entity;
 
 import com.betterfly.objectmapping.model.Product;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -12,6 +9,7 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class OrderEntity {
     private long serialNo;
     private long orderId;

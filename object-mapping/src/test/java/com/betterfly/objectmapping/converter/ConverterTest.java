@@ -20,15 +20,24 @@ public class ConverterTest {
     public void init(){
         orikaConverterImpl = new OrikaConverterImpl();
         modelMapperConverter = new ModelMapperConverterImpl();
-        orderDto = OrderDto.builder()
-                .serialNo(1L)
-                .orderId(new Random().nextLong())
-                .orderingUserName("betterFLY")
-                .status(new Random().nextInt(10))
-                .orderProducts(null)
-                .orderDate(LocalDateTime.now())
-                .deliveryDate(LocalDateTime.now().plusDays(3L))
-                .build();
+//        orderDto = OrderDto.builder()
+//                .serialNo(1L)
+//                .orderId(new Random().nextLong())
+//                .orderingUserName("betterFLY")
+//                .status(new Random().nextInt(10))
+//                .orderProducts(null)
+//                .orderDate(LocalDateTime.now())
+//                .deliveryDate(LocalDateTime.now().plusDays(3L))
+//                .build();
+
+        orderDto = new OrderDto();
+        orderDto.setSerialNo(1L);
+        orderDto.setOrderId(new Random().nextLong());
+        orderDto.setOrderingUserName("betterFLY");
+        orderDto.setStatus(new Random().nextInt(10));
+        orderDto.setOrderProducts(null);
+        orderDto.setOrderDate(LocalDateTime.now());
+        orderDto.setDeliveryDate(LocalDateTime.now().plusDays(4L));
     }
 
     @Test
