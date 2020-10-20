@@ -12,16 +12,17 @@ public class ModelMapperConverterImpl implements Converter {
 
     public ModelMapperConverterImpl() {
         modelMapper = new ModelMapper();
-    }
-
-    @Override
-    public OrderEntity convertDtoToEntity(OrderDto orderDto) {
         PropertyMap<OrderDto, OrderEntity> entityMap = new PropertyMap<OrderDto, OrderEntity>() {
             protected void configure() {
                 map().setOrderStatus(source.getStatus());
             }
         };
         modelMapper.addMappings(entityMap);
+    }
+
+    @Override
+    public OrderEntity convertDtoToEntity(OrderDto orderDto) {
+
         return modelMapper.map(orderDto, OrderEntity.class);
 //        return (OrderEntity) modelMapper.typeMap(OrderDto.class, OrderEntity.class).addMappings(mapper -> {
 //            mapper.map(src -> src.getStatus(),

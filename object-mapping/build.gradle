@@ -29,7 +29,6 @@ dependencies {
     compile group: 'org.mapstruct', name: 'mapstruct-processor', version: '1.4.1.Final'
 
     compile group: 'org.modelmapper', name: 'modelmapper', version: '2.3.8'
-    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.11.3'
 
     annotationProcessor 'org.projectlombok:lombok'
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.1.Final'
