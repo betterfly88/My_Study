@@ -5,7 +5,6 @@ import com.betterfly.objectmapping.mapper.Converter;
 import com.betterfly.objectmapping.model.OrderDto;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.PropertyMap;
-import org.modelmapper.convention.MatchingStrategies;
 
 public class ModelMapperConverterImpl implements Converter {
     private ModelMapper modelMapper;
@@ -24,9 +23,5 @@ public class ModelMapperConverterImpl implements Converter {
     public OrderEntity convertDtoToEntity(OrderDto orderDto) {
 
         return modelMapper.map(orderDto, OrderEntity.class);
-//        return (OrderEntity) modelMapper.typeMap(OrderDto.class, OrderEntity.class).addMappings(mapper -> {
-//            mapper.map(src -> src.getStatus(),
-//                    OrderEntity::setOrderStatus);
-//        });
     }
 }
