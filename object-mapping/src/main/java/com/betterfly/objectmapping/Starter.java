@@ -3,6 +3,7 @@ package com.betterfly.objectmapping;
 import com.betterfly.objectmapping.converter.ModelMapperConverterImpl;
 import com.betterfly.objectmapping.converter.OrikaConverterImpl;
 import com.betterfly.objectmapping.entity.OrderEntity;
+import com.betterfly.objectmapping.mapper.MapStructConverter;
 import com.betterfly.objectmapping.model.OrderDto;
 import com.betterfly.objectmapping.model.Product;
 
@@ -27,7 +28,7 @@ public class Starter {
     public List<OrderDto> init(){
         List<OrderDto> orderList = new ArrayList<>();
 
-        orikaConverterImpl = new OrikaConverterImpl();
+//        orikaConverterImpl = new OrikaConverterImpl();
         modelMapperConverter = new ModelMapperConverterImpl();
 
         for (int i = 0; i < 500_000; i++) {
@@ -61,6 +62,22 @@ public class Starter {
         return list;
     }
 
+    public void mapStruct_converter(){
+        // given && when
+        long start =  System.currentTimeMillis();
+        // given && when
+        List<OrderEntity> entity =
+                init().stream()
+                        .map(MapStructConverter.INSTANCE::convertDtoToEntity)
+                        .collect(Collectors.toList());
+
+
+        // then
+        long end = System.currentTimeMillis();
+        double secDiffTime = (end - start)/1000.0;
+        System.out.println("실행시간(s) : "+secDiffTime);
+    }
+
     public void modelMapper_converter(){
         long start =  System.currentTimeMillis();
         // given && when
@@ -71,8 +88,6 @@ public class Starter {
 
 
         // then
-        System.out.println(entity.size());
-
         long end = System.currentTimeMillis();
         double secDiffTime = (end - start)/1000.0;
         System.out.println("실행시간(s) : "+secDiffTime);
@@ -88,8 +103,6 @@ public class Starter {
 
 
         // then
-        System.out.println(entity.size());
-
         long end = System.currentTimeMillis();
         double secDiffTime = (end - start)/1000.0;
         System.out.println("실행시간(s) : "+secDiffTime);
@@ -97,8 +110,9 @@ public class Starter {
 
     public void timeCheck(){
         for (int i = 0; i < 10; i++) {
+            mapStruct_converter();
 //            orika_converter();
-            modelMapper_converter();
+//            modelMapper_converter();
         }
     }
 }
